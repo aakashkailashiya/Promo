@@ -1,0 +1,738 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CWealth · Privacy-first finance</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #0f2b4b;        /* deep navy */
+            --primary-light: #1f4b7a;
+            --accent: #2d7a4b;          /* forest green */
+            --accent-light: #4c9e6f;
+            --highlight: #00d9a0;       /* mint */
+            --neutral-dark: #1a2639;
+            --neutral: #3c4b5f;
+            --neutral-light: #6c7a8e;
+            --neutral-bg: #ffffff;
+            --light-bg: #f4f8fc;
+            --card-bg: #ffffff;
+            --border-light: #e0e8f0;
+            --success: #00d95f;
+            --warning: #ffb347;
+            --gradient-primary: linear-gradient(135deg, #0f2b4b 0%, #2d7a4b 100%);
+            --gradient-accent: linear-gradient(135deg, #2d7a4b 0%, #00d9a0 100%);
+            --shadow-sm: 0 4px 6px rgba(0, 20, 30, 0.08);
+            --shadow-md: 0 10px 25px rgba(0, 30, 40, 0.1);
+            --shadow-lg: 0 20px 40px rgba(0, 40, 50, 0.12);
+            --radius-sm: 10px;
+            --radius-md: 16px;
+            --radius-lg: 24px;
+            --radius-xl: 32px;
+        }
+      
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+      
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--neutral-bg);
+            color: var(--neutral-dark);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+      
+        h1, h2, h3, h4 {
+            font-family: 'Poppins', sans-serif;
+            font-weight: 600;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* --- MODERN HERO SECTION --- */
+        .hero {
+            position: relative;
+            background: radial-gradient(circle at top right, #e9f2ef 0%, #f4f8fc 50%, #ffffff 100%);
+            padding: 20px 0 100px;
+            overflow: hidden;
+        }
+
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 0;
+            margin-bottom: 60px;
+        }
+
+        .nav-logo {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            text-decoration: none;
+        }
+
+        .nav-logo-icon {
+            width: 44px;
+            height: 44px;
+            border-radius: 12px;
+            background: var(--gradient-primary);
+            background-image: url('https://play-lh.googleusercontent.com/gaxT1kETPFYSjPBEF9qiruTKXu-g6rme_BwTntUW6lZu34lr4V2PFW06Y-GfwqFtbINqfBIoEuJrGTNLBh_Nlg=w240-h480-rw');
+            background-size: cover;
+            box-shadow: var(--shadow-sm);
+        }
+
+        .nav-logo-text {
+            font-size: 26px;
+            font-weight: 700;
+            color: var(--primary);
+            letter-spacing: -0.5px;
+        }
+
+        .nav-cta {
+            background: var(--primary);
+            color: white;
+            padding: 12px 28px;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 14px;
+            transition: 0.3s;
+            box-shadow: 0 4px 15px rgba(15, 43, 75, 0.2);
+        }
+
+        .hero-grid {
+            display: grid;
+            grid-template-columns: 1.2fr 0.8fr;
+            gap: 40px;
+            align-items: center;
+        }
+
+        .badge-new {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: rgba(45, 122, 75, 0.1);
+            color: var(--accent);
+            padding: 6px 16px;
+            border-radius: 20px;
+            font-size: 14px;
+            font-weight: 600;
+            margin-bottom: 24px;
+            border: 1px solid rgba(45, 122, 75, 0.2);
+        }
+
+        .hero-title {
+            font-size: 56px;
+            line-height: 1.1;
+            color: var(--primary);
+            margin-bottom: 24px;
+        }
+
+        .hero-title span {
+            background: linear-gradient(90deg, var(--primary), var(--accent));
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+
+        .hero-subtitle {
+            font-size: 19px;
+            color: var(--neutral-light);
+            margin-bottom: 40px;
+            max-width: 540px;
+        }
+
+        .hero-btns {
+            display: flex;
+            gap: 16px;
+            flex-wrap: wrap;
+        }
+
+        .btn-primary {
+            background: var(--gradient-primary);
+            color: white;
+            padding: 18px 36px;
+            border-radius: var(--radius-md);
+            text-decoration: none;
+            font-weight: 600;
+            display: inline-flex;
+            align-items: center;
+            gap: 12px;
+            transition: 0.3s;
+            box-shadow: 0 10px 30px rgba(15, 43, 75, 0.2);
+        }
+
+        .btn-outline {
+            background: white;
+            color: var(--primary);
+            padding: 18px 36px;
+            border-radius: var(--radius-md);
+            text-decoration: none;
+            font-weight: 600;
+            display: inline-flex;
+            align-items: center;
+            gap: 12px;
+            border: 1px solid var(--border-light);
+            transition: 0.3s;
+        }
+
+        .hero-visual {
+            position: relative;
+            display: flex;
+            justify-content: center;
+        }
+
+        .floating-mockup {
+            width: 320px;
+            height: 640px;
+            background: #1a2639;
+            border-radius: 44px;
+            padding: 12px;
+            box-shadow: 20px 40px 80px rgba(0, 30, 40, 0.2);
+            animation: float 6s ease-in-out infinite;
+        }
+
+        .mockup-inner {
+            width: 100%;
+            height: 100%;
+            background: white;
+            border-radius: 32px;
+            overflow: hidden;
+            position: relative;
+        }
+
+        /* --- FEATURE SECTIONS --- */
+        .section {
+            display: flex;
+            align-items: center;
+            margin: 80px 0;
+            background-color: var(--card-bg);
+            border-radius: var(--radius-lg);
+            overflow: hidden;
+            box-shadow: var(--shadow-md);
+            border: 1px solid var(--border-light);
+            transition: transform 0.3s;
+        }
+
+        .section:nth-child(even) { flex-direction: row-reverse; }
+
+        .text-content { flex: 1; padding: 60px; }
+        
+        .step-number {
+            width: 48px;
+            height: 48px;
+            background: var(--gradient-primary);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            margin-bottom: 24px;
+            box-shadow: 0 4px 12px rgba(15,43,75,0.2);
+        }
+
+        .section-title { font-size: 36px; margin-bottom: 20px; color: var(--primary); }
+        .section-description { font-size: 18px; color: var(--neutral-light); margin-bottom: 30px; }
+
+        .features-list { list-style: none; }
+        .features-list li {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 16px;
+            font-weight: 500;
+        }
+        .feature-icon-small {
+            width: 32px;
+            height: 32px;
+            background: rgba(45, 122, 75, 0.1);
+            color: var(--accent);
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 14px;
+        }
+
+        .phone-container {
+            flex: 1;
+            padding: 60px;
+            background: linear-gradient(135deg, #f8fafc 0%, #eff6ff 100%);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .phone-frame {
+            width: 270px;
+            background: #1a2639;
+            border-radius: 40px;
+            padding: 10px;
+            box-shadow: var(--shadow-lg);
+            position: relative;
+        }
+
+        .phone-screen {
+            background: white;
+            height: 520px;
+            border-radius: 30px;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .mobile-header {
+            background: var(--gradient-primary);
+            color: white;
+            padding: 16px;
+            text-align: center;
+            font-weight: 600;
+            font-size: 16px;
+        }
+
+        .screen-content { padding: 16px; }
+
+        .list-item, .budget-item, .goal-item {
+            background: var(--light-bg);
+            border-radius: 12px;
+            padding: 12px;
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            border: 1px solid var(--border-light);
+        }
+
+        .progress-bar {
+            height: 8px;
+            background: #e2e8f0;
+            border-radius: 4px;
+            margin-top: 8px;
+            overflow: hidden;
+        }
+        .progress-fill { height: 100%; background: var(--gradient-accent); }
+
+        /* --- VIDEO SECTION --- */
+        .video-section {
+            margin: 100px 0;
+            text-align: center;
+        }
+
+        .video-container {
+            max-width: 900px;
+            margin: 40px auto;
+            aspect-ratio: 16/9;
+            background: #000;
+            border-radius: var(--radius-lg);
+            overflow: hidden;
+            box-shadow: var(--shadow-lg);
+            position: relative;
+            border: 4px solid var(--border-light);
+        }
+
+        .video-placeholder {
+            width: 100%;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            background: linear-gradient(rgba(15, 43, 75, 0.8), rgba(15, 43, 75, 0.8)), url('https://images.unsplash.com/photo-1554224155-6726b3ff858f?auto=format&fit=crop&q=80&w=1200');
+            background-size: cover;
+            background-position: center;
+            color: white;
+            cursor: pointer;
+        }
+
+        .play-button {
+            width: 80px;
+            height: 80px;
+            background: var(--accent);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 30px;
+            margin-bottom: 20px;
+            transition: 0.3s;
+            box-shadow: 0 0 30px rgba(45, 122, 75, 0.5);
+        }
+
+        .video-placeholder:hover .play-button {
+            transform: scale(1.1);
+            background: var(--highlight);
+        }
+
+        /* --- PRIVACY SHOWCASE --- */
+        .privacy-showcase {
+            background: var(--gradient-primary);
+            color: white;
+            padding: 80px 0;
+            text-align: center;
+            border-radius: var(--radius-lg);
+            margin: 100px 0;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .privacy-badges {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            flex-wrap: wrap;
+            margin-top: 40px;
+        }
+
+        .badge-item {
+            background: rgba(255,255,255,0.1);
+            padding: 12px 24px;
+            border-radius: 30px;
+            border: 1px solid rgba(255,255,255,0.2);
+            backdrop-filter: blur(8px);
+            font-weight: 600;
+        }
+
+        /* --- FOOTER --- */
+        .footer {
+            background: #f8fafc;
+            padding: 80px 0 40px;
+            border-top: 1px solid var(--border-light);
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr;
+            gap: 60px;
+        }
+
+        .footer-logo-group { margin-bottom: 30px; }
+        .footer-title { font-size: 20px; margin-bottom: 25px; color: var(--primary); position: relative; padding-bottom: 10px; }
+        .footer-title::after { content: ''; position: absolute; bottom: 0; left: 0; width: 40px; height: 3px; background: var(--accent); border-radius: 2px; }
+
+        .footer-links { list-style: none; }
+        .footer-links li { margin-bottom: 12px; }
+        .footer-links a { text-decoration: none; color: var(--neutral-light); transition: 0.3s; display: flex; align-items: center; gap: 8px; }
+        .footer-links a:hover { color: var(--primary); padding-left: 5px; }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0px) rotate(1deg); }
+            50% { transform: translateY(-20px) rotate(-1deg); }
+        }
+
+        @media (max-width: 992px) {
+            .hero-grid, .section, .footer-grid { grid-template-columns: 1fr; flex-direction: column !important; }
+            .hero-title { font-size: 42px; }
+            .text-content { padding: 40px 20px; text-align: center; }
+            .step-number { margin: 0 auto 20px; }
+            .hero-btns { justify-content: center; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <nav class="navbar">
+                <a href="#" class="nav-logo">
+                    <div class="nav-logo-icon"></div>
+                    <span class="nav-logo-text">CWealth</span>
+                </a>
+                <a href="https://play.google.com/store/apps/details?id=com.ai.cwealth" class="nav-cta">Download Free</a>
+            </nav>
+
+            <div class="hero-grid">
+                <div class="hero-content">
+                    <div class="badge-new">
+                        <i class="fas fa-shield-alt"></i> 100% On-Device & Private
+                    </div>
+                    <h1 class="hero-title">Master Your Money, <span>Without the Tracking.</span></h1>
+                    <p class="hero-subtitle">The privacy-first personal finance manager. Track expenses, budgets, and goals – 100% offline, no cloud, zero data collection.</p>
+                    
+                    <div class="hero-btns">
+                        <a href="https://play.google.com/store/apps/details?id=com.ai.cwealth" class="btn-primary">
+                            <i class="fab fa-google-play"></i> Get it on Google Play
+                        </a>
+                        <a href="https://youtu.be/oNjU_QU7zEo" target="_blank" class="btn-outline">
+                            <i class="fab fa-youtube"></i> Watch Video
+                        </a>
+                    </div>
+                </div>
+
+                <div class="hero-visual">
+                    <div class="floating-mockup">
+                        <div class="mockup-inner">
+                            <div class="mobile-header" style="height: 120px; padding-top: 40px;">
+                                <div style="font-size: 12px; opacity: 0.8;">Total Balance</div>
+                                <div style="font-size: 24px; font-weight: 700;" data-count="428450" data-prefix="₹" data-suffix=".00">₹0.00</div>
+                            </div>
+                            <div class="screen-content">
+                                <div class="list-item"><span>🍎 Groceries</span> <strong style="margin-left: auto;" data-count="1200" data-prefix="-₹">-₹0</strong></div>
+                                <div class="list-item"><span>💰 Salary</span> <strong style="margin-left: auto; color: green;" data-count="95000" data-prefix="+₹">+₹0</strong></div>
+                                <div class="list-item" style="background: #eef9f5;">
+                                    <div style="width: 100%;">
+                                        <div style="font-size: 12px;">Goal: New Car</div>
+                                        <div class="progress-bar"><div class="progress-fill" style="width: 65%;"></div></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <div class="container" id="features">
+        
+        <!-- Section 1: Expenses -->
+        <div class="section">
+            <div class="text-content">
+                <div class="step-number">1</div>
+                <h2 class="section-title">Track Expenses & Income</h2>
+                <p class="section-description">Manually log every transaction with smart categorization. See where your money goes with clear, instant insights.</p>
+                <ul class="features-list">
+                    <li><div class="feature-icon-small"><i class="fas fa-receipt"></i></div> Smart categories auto‑sort spending</li>
+                    <li><div class="feature-icon-small"><i class="fas fa-chart-line"></i></div> Visual analytics & beautiful reports</li>
+                    <li><div class="feature-icon-small"><i class="fas fa-search"></i></div> Advanced search for any transaction</li>
+                </ul>
+            </div>
+            <div class="phone-container">
+                <div class="phone-frame">
+                    <div class="phone-screen">
+                        <div class="mobile-header">Recent activity</div>
+                        <div class="screen-content">
+                            <div class="list-item"><i class="fas fa-coffee"></i> <span>Coffee Shop</span> <strong style="margin-left:auto;" data-count="375" data-prefix="-₹">-₹0</strong></div>
+                            <div class="list-item"><i class="fas fa-bus"></i> <span>Transit</span> <strong style="margin-left:auto;" data-count="200" data-prefix="-₹">-₹0</strong></div>
+                            <div class="list-item"><i class="fas fa-briefcase"></i> <span>Salary</span> <strong style="margin-left:auto; color:green;" data-count="204000" data-prefix="+₹">+₹0</strong></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Section 2: Budgets -->
+        <div class="section">
+            <div class="text-content">
+                <div class="step-number">2</div>
+                <h2 class="section-title">Flexible Budgets & Alerts</h2>
+                <p class="section-description">Set monthly or weekly budgets and get real-time alerts when you're close to your spending limit.</p>
+                <ul class="features-list">
+                    <li><div class="feature-icon-small"><i class="fas fa-bell"></i></div> Smart overspending alerts</li>
+                    <li><div class="feature-icon-small"><i class="fas fa-sliders-h"></i></div> Custom weekly/monthly periods</li>
+                    <li><div class="feature-icon-small"><i class="fas fa-redo"></i></div> Budget rollover options</li>
+                </ul>
+            </div>
+            <div class="phone-container">
+                <div class="phone-frame">
+                    <div class="phone-screen">
+                        <div class="mobile-header">Monthly Budgets</div>
+                        <div class="screen-content">
+                            <div style="margin-bottom: 20px;">
+                                <div style="display:flex; justify-content:space-between;"><span>Groceries</span> <span data-count="72" data-suffix="%">0%</span></div>
+                                <div class="progress-bar"><div class="progress-fill" style="width:72%"></div></div>
+                            </div>
+                            <div style="background:#fef2e0; padding:10px; border-radius:10px; border-left:4px solid var(--warning); font-size:13px;">
+                                <i class="fas fa-exclamation-triangle"></i> Budget almost full!
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Video Showcase Section -->
+        <div class="video-section">
+            <h2 style="font-size: 36px; color: var(--primary);">See CWealth in Action</h2>
+            <p style="color: var(--neutral-light); font-size: 18px; margin-top: 10px;">A quick walkthrough of the privacy-first experience.</p>
+            <div class="video-container">
+                <iframe width="100%" height="100%" src="https://www.youtube.com/embed/oNjU_QU7zEo" title="CWealth App Demo" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen style="border-radius: var(--radius-lg);"></iframe>
+            </div>
+        </div>
+
+        <!-- Section 3: Goals -->
+        <div class="section">
+            <div class="text-content">
+                <div class="step-number">3</div>
+                <h2 class="section-title">Achieve Financial Goals</h2>
+                <p class="section-description">Set savings targets for vacations, emergency funds, or big purchases and track your journey.</p>
+                <ul class="features-list">
+                    <li><div class="feature-icon-small"><i class="fas fa-bullseye"></i></div> Percentage & days-left tracking</li>
+                    <li><div class="feature-icon-small"><i class="fas fa-flag"></i></div> Milestone celebrations</li>
+                </ul>
+            </div>
+            <div class="phone-container">
+                <div class="phone-frame">
+                    <div class="phone-screen">
+                        <div class="mobile-header">Savings Goals</div>
+                        <div class="screen-content">
+                            <div class="goal-item">
+                                <div style="width:100%">
+                                    <span>🏝️ Tokyo Trip</span>
+                                    <div class="progress-bar"><div class="progress-fill" style="width:48%"></div></div>
+                                    <small>₹1.0L / ₹2.0L</small>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Privacy Showcase -->
+        <div class="privacy-showcase">
+            <h2 style="font-size: 40px; margin-bottom: 20px;">Your money. Your data. Your device.</h2>
+            <p style="font-size: 18px; opacity: 0.9; max-width: 700px; margin: 0 auto;">CWealth never accesses your messages, location, or contacts. Everything stays private.</p>
+            <div class="privacy-badges">
+                <div class="badge-item"><i class="fas fa-hdd"></i> 100% Local</div>
+                <div class="badge-item"><i class="fas fa-user-slash"></i> No Accounts</div>
+                <div class="badge-item"><i class="fas fa-wifi-slash"></i> Offline First</div>
+                <div class="badge-item"><i class="fas fa-ban"></i> Zero Trackers</div>
+            </div>
+        </div>
+
+        <!-- App Store Download -->
+        <div style="background: var(--light-bg); padding: 80px 40px; border-radius: var(--radius-lg); text-align: center; margin-bottom: 100px; border: 1px solid var(--border-light);">
+            <h2 style="font-size: 32px; color: var(--primary); margin-bottom: 20px;">Take control of your finances today</h2>
+            <p style="color: var(--neutral-light); margin-bottom: 40px;">No sign-up required. Download and start tracking in seconds.</p>
+            <a href="https://play.google.com/store/apps/details?id=com.ai.cwealth" class="btn-primary" style="padding: 20px 50px;">
+                <i class="fab fa-google-play"></i> Get it on Google Play
+            </a>
+        </div>
+
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div>
+                    <div class="footer-logo-group">
+                        <div style="display: flex; align-items: center; gap: 12px; margin-bottom: 15px;">
+                            <div style="width: 40px; height: 40px; border-radius: 10px; background-image: url('https://play-lh.googleusercontent.com/gaxT1kETPFYSjPBEF9qiruTKXu-g6rme_BwTntUW6lZu34lr4V2PFW06Y-GfwqFtbINqfBIoEuJrGTNLBh_Nlg=w240-h480-rw'); background-size: cover; background-position: center; box-shadow: var(--shadow-sm);"></div>
+                            <h3 style="margin: 0; font-size: 22px; color: var(--primary);">CWealth</h3>
+                        </div>
+                        <p style="color: var(--neutral-light); margin-bottom: 20px;">Privacy-first personal finance manager. Track expenses, budgets, and goals — all on your device.</p>
+                        <a href="https://play.google.com/store/apps/details?id=com.ai.cwealth" target="_blank" style="background: rgba(45,122,75,0.1); color: var(--accent); padding: 10px 20px; border-radius: 10px; text-decoration: none; display: inline-flex; align-items: center; gap: 8px; font-weight: 500; border: 1px solid var(--accent); transition: 0.3s; margin-bottom: 30px;">
+                            <i class="fab fa-google-play"></i> Play Store
+                        </a>
+                        <a href="https://youtu.be/oNjU_QU7zEo" target="_blank" style="background: rgba(15,43,75,0.1); color: var(--primary); padding: 10px 20px; border-radius: 10px; text-decoration: none; display: inline-flex; align-items: center; gap: 8px; font-weight: 500; border: 1px solid var(--primary); transition: 0.3s; margin-bottom: 30px; margin-left: 10px;">
+                            <i class="fab fa-youtube"></i> Watch Video
+                        </a>
+                    </div>
+                    
+                    <div class="footer-logo-group">
+                        <div style="display: flex; align-items: center; gap: 12px; margin-bottom: 15px;">
+                            <div style="width: 40px; height: 40px; border-radius: 10px; background-image: url('https://play-lh.googleusercontent.com/g03yusde2SPcHQfaNVFvZ27dPXQBJZhJp8L_zI76yD5evM62NLT2f0XTN7hgqsr39cnjVaubWvE0CO6aKyxNeQ=w480-h960-rw'); background-size: cover; background-position: center; box-shadow: var(--shadow-sm);"></div>
+                            <h3 style="margin: 0; font-size: 22px; color: var(--primary);">Bulk Curve</h3>
+                        </div>
+                        <p style="color: var(--neutral-light); margin-bottom: 20px;">Professional bulk SMS and communication management tool.</p>
+                        <div style="display: flex; gap: 12px; flex-wrap: wrap;">
+                            <a href="https://play.google.com/store/apps/details?id=com.b.curve" target="_blank" style="background: rgba(45,122,75,0.1); color: var(--accent); padding: 8px 16px; border-radius: 8px; text-decoration: none; display: inline-flex; align-items: center; gap: 8px; font-size: 14px; border: 1px solid var(--accent);">
+                                <i class="fab fa-google-play"></i> Play Store
+                            </a>
+                            <a href="https://htmlpreview.github.io/?https://github.com/aakashkailashiya/Promo/blob/master/bulk%20curve.html" target="_blank" style="background: rgba(15,43,75,0.1); color: var(--primary); padding: 8px 16px; border-radius: 8px; text-decoration: none; display: inline-flex; align-items: center; gap: 8px; font-size: 14px; border: 1px solid var(--primary);">
+                                <i class="fas fa-globe"></i> Promo Page
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                <div>
+                    <h4 class="footer-title">Product</h4>
+                    <ul class="footer-links">
+                        <li><a href="#"><i class="fas fa-chevron-right" style="font-size: 10px;"></i> Expense Tracking</a></li>
+                        <li><a href="#"><i class="fas fa-chevron-right" style="font-size: 10px;"></i> Budget Planning</a></li>
+                        <li><a href="#"><i class="fas fa-chevron-right" style="font-size: 10px;"></i> Goal Setting</a></li>
+                        <li><a href="#"><i class="fas fa-chevron-right" style="font-size: 10px;"></i> Privacy Policy</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="footer-title">Developer</h4>
+                    <ul class="footer-links">
+                        <li><a href="#"><i class="fas fa-user" style="font-size: 12px;"></i> Akash Kailashiya</a></li>
+                        <li><a href="#"><i class="fas fa-envelope" style="font-size: 12px;"></i> Contact Support</a></li>
+                        <li><a href="#"><i class="fab fa-github" style="font-size: 12px;"></i> GitHub Profile</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div style="margin-top: 60px; padding-top: 30px; border-top: 1px solid #e2e8f0; text-align: center; color: var(--neutral-light); font-size: 14px;">
+                &copy; 2026 CWealth. All rights reserved. | Built by Akash Kailashiya · v1.3
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Count-up animation function
+        function animateValue(element, start, end, duration, prefix = '', suffix = '') {
+            let startTimestamp = null;
+            const step = (timestamp) => {
+                if (!startTimestamp) startTimestamp = timestamp;
+                const progress = Math.min((timestamp - startTimestamp) / duration, 1);
+                const value = Math.floor(progress * (end - start) + start);
+                element.textContent = prefix + value.toLocaleString('en-IN') + suffix;
+                if (progress < 1) {
+                    window.requestAnimationFrame(step);
+                }
+            };
+            window.requestAnimationFrame(step);
+        }
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                    
+                    // Trigger count-up animation for numbers
+                    const numberElements = entry.target.querySelectorAll('[data-count]');
+                    numberElements.forEach(el => {
+                        if (!el.classList.contains('counted')) {
+                            el.classList.add('counted');
+                            const endValue = parseInt(el.getAttribute('data-count'));
+                            const prefix = el.getAttribute('data-prefix') || '';
+                            const suffix = el.getAttribute('data-suffix') || '';
+                            animateValue(el, 0, endValue, 2000, prefix, suffix);
+                        }
+                    });
+                }
+            });
+        }, { threshold: 0.1 });
+
+        document.querySelectorAll('.section, .privacy-showcase, .video-section').forEach(el => {
+            el.style.opacity = '0';
+            el.style.transform = 'translateY(30px)';
+            el.style.transition = 'all 0.8s ease-out';
+            observer.observe(el);
+        });
+
+        // Trigger count-up animation for hero section on page load
+        window.addEventListener('load', () => {
+            setTimeout(() => {
+                const heroMockup = document.querySelector('.floating-mockup');
+                if (heroMockup) {
+                    const numberElements = heroMockup.querySelectorAll('[data-count]');
+                    numberElements.forEach(el => {
+                        if (!el.classList.contains('counted')) {
+                            el.classList.add('counted');
+                            const endValue = parseInt(el.getAttribute('data-count'));
+                            const prefix = el.getAttribute('data-prefix') || '';
+                            const suffix = el.getAttribute('data-suffix') || '';
+                            animateValue(el, 0, endValue, 2000, prefix, suffix);
+                        }
+                    });
+                }
+            }, 500);
+        });
+    </script>
+</body>
+</html>
