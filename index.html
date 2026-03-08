@@ -1,0 +1,535 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="description" content="Tech Creator & Developer - Building high-performance Android apps, professional web projects, and breaking down complex AI & tech concepts for 28,000+ subscribers.">
+    <meta name="keywords" content="Android Developer, Web Developer, Tech Creator, App Developer, AI">
+    <meta name="author" content="Akash Kailashiya">
+    <meta property="og:title" content="Akash Kailashiya - Tech Creator & Developer">
+    <meta property="og:description" content="Building exceptional apps, web solutions, and tech content">
+    <meta property="og:image" content="akash_kailashiya.jpg">
+    <meta name="theme-color" content="#0a0a0a">
+    <link rel="icon" type="image/jpeg" href="akash_kailashiya.jpg">
+    <title>Akash Kailashiya - Tech Creator & Developer</title>
+    
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Lucide Icons CDN -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+
+    <!-- Custom Tailwind Configuration -->
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'system-ui', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+
+    <!-- Base Styles for App-like feel -->
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap');
+        
+        body {
+            -webkit-tap-highlight-color: transparent;
+        }
+
+        /* Safe area padding for mobile notches */
+        .pb-safe {
+            padding-bottom: env(safe-area-inset-bottom, 20px);
+        }
+
+        /* Active tab icon fill utility */
+        .tab-active i {
+            color: white;
+            fill: white;
+        }
+        .tab-active span {
+            color: white;
+        }
+    </style>
+</head>
+<body class="min-h-screen bg-[#0a0a0a] text-gray-100 font-sans selection:bg-blue-500 selection:text-white pb-20 md:pb-0 overflow-x-hidden">
+
+    <!-- Desktop Top Navbar (Hidden on Mobile) -->
+    <nav id="desktop-nav" class="hidden md:block fixed w-full z-50 transition-all duration-300 bg-transparent py-6" role="navigation" aria-label="Main navigation">
+        <div class="max-w-6xl mx-auto px-6 flex justify-between items-center">
+            <div class="text-2xl font-black tracking-tight text-white cursor-pointer" onclick="scrollToSection('home')">
+                Akash<span class="text-blue-500">.</span>
+            </div>
+            
+            <div class="flex space-x-8 text-sm font-semibold text-gray-400">
+                <button onclick="scrollToSection('home')" class="nav-link capitalize transition-colors hover:text-blue-400" data-target="home">home</button>
+                <button onclick="scrollToSection('about')" class="nav-link capitalize transition-colors hover:text-blue-400" data-target="about">about</button>
+                <button onclick="scrollToSection('apps')" class="nav-link capitalize transition-colors hover:text-blue-400" data-target="apps">apps</button>
+                <button onclick="scrollToSection('contact')" class="nav-link capitalize transition-colors hover:text-blue-400" data-target="contact">contact</button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Mobile Top App Bar -->
+    <div id="mobile-nav" class="md:hidden fixed top-0 w-full z-40 transition-all duration-300 bg-transparent py-4 px-6" role="banner">
+        <div class="text-xl font-black text-white text-center tracking-tight">
+            Akash<span class="text-blue-500">K.</span>
+        </div>
+    </div>
+
+    <!-- Hero Section -->
+    <section id="home" class="pt-28 md:pt-48 pb-16 px-6 max-w-6xl mx-auto flex flex-col items-center text-center">
+        <!-- Profile Avatar with App-style ring -->
+        <div class="relative mb-8 group">
+            <div class="absolute inset-0 bg-gradient-to-tr from-blue-600 to-purple-600 rounded-full blur-xl opacity-50 group-hover:opacity-80 transition-opacity duration-500"></div>
+            <div class="relative p-1 rounded-full bg-gradient-to-tr from-blue-500 to-purple-500">
+                <div class="bg-[#0a0a0a] rounded-full p-1.5">
+                    <div class="w-28 h-28 md:w-36 md:h-36 rounded-full bg-gray-900 flex items-center justify-center border border-white/10 overflow-hidden relative">
+                        <img 
+                            src="akash_kailashiya.jpg"
+                            alt="Akash Kailashiya - Tech Creator and Developer"
+                            class="w-full h-full object-cover"
+                            loading="lazy"
+                            onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';"
+                        />
+                        <div class="hidden w-full h-full bg-gradient-to-br from-gray-800 to-black items-center justify-center">
+                            <i data-lucide="code" class="w-10 h-10 text-gray-500"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <h1 class="text-4xl md:text-6xl font-extrabold tracking-tight mb-4 text-white">
+            Akash Kailashiya
+        </h1>
+        <p class="text-blue-400 font-semibold mb-6 uppercase tracking-widest text-sm md:text-base">Tech Creator • App & Web Developer</p>
+        
+        <p class="text-base md:text-xl text-gray-400 max-w-2xl mx-auto mb-10 leading-relaxed px-4">
+            Building high-performance Android apps, professional web projects, and breaking down complex AI & tech concepts for over 28,000 subscribers.
+        </p>
+
+        <div class="flex flex-col sm:flex-row gap-4 w-full sm:w-auto px-4">
+            <a href="https://www.youtube.com/akashkailashiya" target="_blank" rel="noopener noreferrer" class="flex items-center justify-center gap-2 bg-white text-black hover:bg-gray-200 px-8 py-4 rounded-2xl font-bold transition-all w-full sm:w-auto active:scale-95">
+                <i data-lucide="youtube" class="w-5 h-5 text-red-600"></i>
+                Watch Channel
+            </a>
+            <button onclick="scrollToSection('apps')" class="flex items-center justify-center gap-2 bg-[#1a1a1a] hover:bg-[#252525] text-white px-8 py-4 rounded-2xl font-bold transition-all border border-white/10 w-full sm:w-auto active:scale-95">
+                <i data-lucide="layout-grid" class="w-5 h-5"></i>
+                View Work
+            </button>
+        </div>
+    </section>
+
+    <!-- Stats/About Section -->
+    <section id="about" class="py-12 bg-gradient-to-b from-[#0a0a0a] to-[#111]">
+        <div class="max-w-6xl mx-auto px-6">
+            <div class="flex items-center gap-3 mb-8">
+                <div class="w-10 h-10 rounded-full bg-blue-500/10 flex items-center justify-center">
+                    <i data-lucide="user" class="w-5 h-5 text-blue-400"></i>
+                </div>
+                <h2 class="text-2xl md:text-3xl font-bold">About & Stats</h2>
+            </div>
+            
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-4 mb-10">
+                <div class="bg-[#151515] p-5 rounded-3xl border border-white/5 flex flex-col justify-center">
+                    <h3 class="text-3xl font-black text-white mb-1">28K+</h3>
+                    <p class="text-gray-500 text-xs font-bold uppercase tracking-wider">Subscribers</p>
+                </div>
+                <div class="bg-[#151515] p-5 rounded-3xl border border-white/5 flex flex-col justify-center">
+                    <h3 class="text-3xl font-black text-white mb-1">3.5K+</h3>
+                    <p class="text-gray-500 text-xs font-bold uppercase tracking-wider">Videos</p>
+                </div>
+                <div class="bg-[#151515] p-5 rounded-3xl border border-white/5 flex flex-col justify-center">
+                    <h3 class="text-3xl font-black text-white mb-1">20+</h3>
+                    <p class="text-gray-500 text-xs font-bold uppercase tracking-wider">Apps & Sites</p>
+                </div>
+                <div class="bg-[#151515] p-5 rounded-3xl border border-white/5 flex flex-col justify-center">
+                    <h3 class="text-3xl font-black text-white mb-1">Local</h3>
+                    <p class="text-gray-500 text-xs font-bold uppercase tracking-wider">AI Tools</p>
+                </div>
+            </div>
+
+            <div class="bg-[#151515] p-6 md:p-8 rounded-3xl border border-white/5">
+                <p class="text-gray-300 text-base md:text-lg leading-relaxed mb-4">
+                    I am a technology content creator and developer from India. My passion lies in exploring the cutting edge of tech—from hardware hacking with ESP32 and 3D printing to diving deep into Artificial Intelligence and Android OS features.
+                </p>
+                <p class="text-gray-300 text-base md:text-lg leading-relaxed">
+                    When I'm not making videos, I'm coding. I build privacy-first Android applications, design local AI-powered web tools, and develop professional websites for businesses to help them grow their digital presence.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Apps Section -->
+    <section id="apps" class="py-16 bg-[#111]">
+        <div class="max-w-6xl mx-auto px-6">
+            <div class="flex items-center gap-3 mb-8">
+                <div class="w-10 h-10 rounded-full bg-purple-500/10 flex items-center justify-center">
+                    <i data-lucide="smartphone" class="w-5 h-5 text-purple-400"></i>
+                </div>
+                <h2 class="text-2xl md:text-3xl font-bold">Featured Apps</h2>
+            </div>
+
+            <div class="space-y-8 md:space-y-12">
+                
+                <!-- CWealth App -->
+                <div class="bg-[#1a1a1a] rounded-[2rem] p-6 md:p-10 border border-white/10 relative overflow-hidden flex flex-col md:flex-row gap-8">
+                    <div class="absolute top-0 right-0 w-64 h-64 bg-green-500/10 rounded-full blur-[100px] pointer-events-none"></div>
+                    
+                    <div class="flex-1">
+                        <div class="flex items-center gap-4 mb-6">
+                            <div class="w-16 h-16 bg-green-500/10 rounded-2xl flex items-center justify-center text-green-400 shrink-0">
+                                <i data-lucide="wallet" class="w-8 h-8"></i>
+                            </div>
+                            <div>
+                                <h3 class="text-2xl md:text-3xl font-black text-white mb-1">CWealth</h3>
+                                <p class="text-green-400 font-semibold text-sm">Finance Manager</p>
+                            </div>
+                        </div>
+                        
+                        <p class="text-gray-400 mb-6 leading-relaxed">
+                            A privacy-first personal finance manager where you can easily track income-expenses, manage budgets, monitor financial goals, and analyze spending. 100% offline, no sign-up required, and your data stays on your device.
+                        </p>
+                        
+                        <div class="flex flex-wrap gap-2 mb-8">
+                            <span class="px-3 py-1.5 bg-black/50 border border-white/5 rounded-xl text-xs font-bold text-gray-300">100% Offline</span>
+                            <span class="px-3 py-1.5 bg-black/50 border border-white/5 rounded-xl text-xs font-bold text-gray-300">Material Design 3</span>
+                            <span class="px-3 py-1.5 bg-black/50 border border-white/5 rounded-xl text-xs font-bold text-gray-300">Privacy First</span>
+                        </div>
+                        
+                        <a href="https://play.google.com/store/apps/details?id=com.ai.cwealth" target="_blank" rel="noopener noreferrer" class="flex items-center justify-center gap-2 bg-green-600 text-white hover:bg-green-500 px-6 py-4 rounded-2xl font-bold transition-all active:scale-95 w-full md:w-fit">
+                            Install on Play Store <i data-lucide="external-link" class="w-4 h-4"></i>
+                        </a>
+                    </div>
+
+                    <!-- Responsive YouTube Embed -->
+                    <div class="flex-1 flex items-center justify-center w-full">
+                        <div class="w-full aspect-video rounded-2xl overflow-hidden shadow-2xl border border-white/10 bg-black relative">
+                            <iframe 
+                                width="100%" 
+                                height="100%" 
+                                src="https://www.youtube.com/embed/oNjU_QU7zEo?rel=0&modestbranding=1" 
+                                title="CWealth App Preview" 
+                                frameborder="0" 
+                                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
+                                allowfullscreen
+                                class="absolute top-0 left-0 w-full h-full"
+                            ></iframe>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Bulk Curve App -->
+                <div class="bg-[#1a1a1a] rounded-[2rem] p-6 md:p-10 border border-white/10 relative overflow-hidden flex flex-col md:flex-row gap-8">
+                    <div class="absolute top-0 right-0 w-64 h-64 bg-blue-500/10 rounded-full blur-[100px] pointer-events-none"></div>
+                    
+                    <div class="flex-1">
+                        <div class="flex items-center gap-4 mb-6">
+                            <div class="w-16 h-16 bg-blue-500/10 rounded-2xl flex items-center justify-center text-blue-400 shrink-0">
+                                <i data-lucide="image" class="w-8 h-8"></i>
+                            </div>
+                            <div>
+                                <h3 class="text-2xl md:text-3xl font-black text-white mb-1">Bulk Curve</h3>
+                                <p class="text-blue-400 font-semibold text-sm">Image Utility</p>
+                            </div>
+                        </div>
+                        
+                        <p class="text-gray-400 mb-6 leading-relaxed">
+                            The ultimate image editing utility designed to make your images look clean and professional. Instantly add smooth, rounded corners to multiple images at once, saving you time and effort in your design workflow.
+                        </p>
+                        
+                        <div class="flex flex-wrap gap-2 mb-8">
+                            <span class="px-3 py-1.5 bg-black/50 border border-white/5 rounded-xl text-xs font-bold text-gray-300">Bulk Processing</span>
+                            <span class="px-3 py-1.5 bg-black/50 border border-white/5 rounded-xl text-xs font-bold text-gray-300">Custom Radius</span>
+                            <span class="px-3 py-1.5 bg-black/50 border border-white/5 rounded-xl text-xs font-bold text-gray-300">HD Output</span>
+                        </div>
+                        
+                        <a href="https://play.google.com/store/apps/details?id=com.b.curve" target="_blank" rel="noopener noreferrer" class="flex items-center justify-center gap-2 bg-blue-600 text-white hover:bg-blue-500 px-6 py-4 rounded-2xl font-bold transition-all active:scale-95 w-full md:w-fit">
+                            Install on Play Store <i data-lucide="external-link" class="w-4 h-4"></i>
+                        </a>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Web / Client Projects Section -->
+    <section class="py-16 bg-gradient-to-b from-[#111] to-[#0a0a0a]">
+        <div class="max-w-6xl mx-auto px-6">
+            <div class="flex items-center gap-3 mb-8">
+                <div class="w-10 h-10 rounded-full bg-blue-500/10 flex items-center justify-center">
+                    <i data-lucide="globe" class="w-5 h-5 text-blue-400"></i>
+                </div>
+                <h2 class="text-2xl md:text-3xl font-bold">Client Projects</h2>
+            </div>
+
+            <div class="grid md:grid-cols-3 gap-6">
+                <!-- LV Softech -->
+                <a href="https://lvsoftech.com/" target="_blank" rel="noopener noreferrer" class="bg-[#151515] p-6 md:p-8 rounded-[2rem] border border-white/5 hover:border-blue-500/30 transition-all group active:scale-95 block">
+                    <div class="w-14 h-14 bg-blue-500/10 rounded-2xl flex items-center justify-center text-blue-400 mb-6 group-hover:scale-110 transition-transform">
+                        <i data-lucide="building-2" class="w-7 h-7"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-white mb-2 group-hover:text-blue-400 transition-colors">LV Softech</h3>
+                    <p class="text-gray-400 text-sm mb-6">IT & Software Solutions</p>
+                    <div class="flex items-center gap-2 text-sm font-bold text-gray-300 group-hover:text-white transition-colors">
+                        Visit Website <i data-lucide="external-link" class="w-4 h-4"></i>
+                    </div>
+                </a>
+
+                <!-- Selja Agro -->
+                <a href="https://seljaagro.com/" target="_blank" rel="noopener noreferrer" class="bg-[#151515] p-6 md:p-8 rounded-[2rem] border border-white/5 hover:border-green-500/30 transition-all group active:scale-95 block">
+                    <div class="w-14 h-14 bg-green-500/10 rounded-2xl flex items-center justify-center text-green-400 mb-6 group-hover:scale-110 transition-transform">
+                        <i data-lucide="leaf" class="w-7 h-7"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-white mb-2 group-hover:text-green-400 transition-colors">Selja Agro</h3>
+                    <p class="text-gray-400 text-sm mb-6">Agriculture & Farming</p>
+                    <div class="flex items-center gap-2 text-sm font-bold text-gray-300 group-hover:text-white transition-colors">
+                        Visit Website <i data-lucide="external-link" class="w-4 h-4"></i>
+                    </div>
+                </a>
+
+                <!-- Metro Consultants -->
+                <a href="https://metroconsultants.in/" target="_blank" rel="noopener noreferrer" class="bg-[#151515] p-6 md:p-8 rounded-[2rem] border border-white/5 hover:border-purple-500/30 transition-all group active:scale-95 block">
+                    <div class="w-14 h-14 bg-purple-500/10 rounded-2xl flex items-center justify-center text-purple-400 mb-6 group-hover:scale-110 transition-transform">
+                        <i data-lucide="briefcase" class="w-7 h-7"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-white mb-2 group-hover:text-purple-400 transition-colors">Metro Consultants</h3>
+                    <p class="text-gray-400 text-sm mb-6">Consultancy Services</p>
+                    <div class="flex items-center gap-2 text-sm font-bold text-gray-300 group-hover:text-white transition-colors">
+                        Visit Website <i data-lucide="external-link" class="w-4 h-4"></i>
+                    </div>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Open Source & GitHub Section -->
+    <section class="py-16 bg-[#0a0a0a]">
+        <div class="max-w-6xl mx-auto px-6">
+            <div class="flex items-center justify-between mb-8">
+                <div class="flex items-center gap-3">
+                    <div class="w-10 h-10 rounded-full bg-orange-500/10 flex items-center justify-center">
+                        <i data-lucide="github" class="w-5 h-5 text-orange-400"></i>
+                    </div>
+                    <h2 class="text-2xl md:text-3xl font-bold">Open Source</h2>
+                </div>
+                <a href="https://github.com/aakashkailashiya" target="_blank" rel="noopener noreferrer" class="hidden md:flex items-center gap-2 text-gray-400 hover:text-white transition-colors">
+                    View All <i data-lucide="external-link" class="w-4 h-4"></i>
+                </a>
+            </div>
+
+            <div class="grid md:grid-cols-3 gap-6">
+                <!-- Thinking AI -->
+                <a href="https://github.com/aakashkailashiya" target="_blank" rel="noopener noreferrer" class="bg-[#151515] p-6 md:p-8 rounded-[2rem] border border-white/5 hover:border-orange-500/30 transition-all group active:scale-95 flex flex-col h-full">
+                    <div class="w-14 h-14 bg-orange-500/10 rounded-2xl flex items-center justify-center text-orange-400 mb-6 group-hover:scale-110 transition-transform">
+                        <i data-lucide="cpu" class="w-7 h-7"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-white mb-2 group-hover:text-orange-400 transition-colors">Thinking AI</h3>
+                    <p class="text-gray-400 text-sm mb-6 flex-grow leading-relaxed">
+                        Local AI-powered Multi-Perspective Analyzers. Change how you analyze problems using LM Studio and prompt engineering.
+                    </p>
+                    <div class="flex items-center gap-2 text-sm font-bold text-gray-300 group-hover:text-white transition-colors mt-auto pt-4 border-t border-white/5">
+                        View Repository <i data-lucide="github" class="w-4 h-4"></i>
+                    </div>
+                </a>
+
+                <!-- Heal-OS -->
+                <a href="https://github.com/aakashkailashiya/Heal-OS" target="_blank" rel="noopener noreferrer" class="bg-[#151515] p-6 md:p-8 rounded-[2rem] border border-white/5 hover:border-cyan-500/30 transition-all group active:scale-95 flex flex-col h-full">
+                    <div class="w-14 h-14 bg-cyan-500/10 rounded-2xl flex items-center justify-center text-cyan-400 mb-6 group-hover:scale-110 transition-transform">
+                        <i data-lucide="activity" class="w-7 h-7"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-white mb-2 group-hover:text-cyan-400 transition-colors">Heal-OS</h3>
+                    <p class="text-gray-400 text-sm mb-6 flex-grow leading-relaxed">
+                        A custom operating system project focused on advanced device performance, privacy, and system-level optimizations.
+                    </p>
+                    <div class="flex items-center gap-2 text-sm font-bold text-gray-300 group-hover:text-white transition-colors mt-auto pt-4 border-t border-white/5">
+                        View Repository <i data-lucide="github" class="w-4 h-4"></i>
+                    </div>
+                </a>
+
+                <!-- AiDev -->
+                <a href="https://github.com/aakashkailashiya/AiDev" target="_blank" rel="noopener noreferrer" class="bg-[#151515] p-6 md:p-8 rounded-[2rem] border border-white/5 hover:border-indigo-500/30 transition-all group active:scale-95 flex flex-col h-full">
+                    <div class="w-14 h-14 bg-indigo-500/10 rounded-2xl flex items-center justify-center text-indigo-400 mb-6 group-hover:scale-110 transition-transform">
+                        <i data-lucide="terminal" class="w-7 h-7"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-white mb-2 group-hover:text-indigo-400 transition-colors">AiDev</h3>
+                    <p class="text-gray-400 text-sm mb-6 flex-grow leading-relaxed">
+                        An integrated AI development toolset designed to streamline your coding workflow, bringing intelligent automation to your projects.
+                    </p>
+                    <div class="flex items-center gap-2 text-sm font-bold text-gray-300 group-hover:text-white transition-colors mt-auto pt-4 border-t border-white/5">
+                        View Repository <i data-lucide="github" class="w-4 h-4"></i>
+                    </div>
+                </a>
+            </div>
+            
+            <div class="mt-8 text-center md:hidden">
+                <a href="https://github.com/aakashkailashiya" target="_blank" rel="noopener noreferrer" class="inline-flex items-center justify-center gap-2 bg-[#151515] border border-white/10 hover:bg-[#202020] px-6 py-3 rounded-xl font-bold transition-all active:scale-95 w-full">
+                    View All on GitHub <i data-lucide="external-link" class="w-4 h-4"></i>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Social / Contact Footer -->
+    <footer id="contact" class="bg-[#0a0a0a] pt-12 pb-12 border-t border-white/10 relative">
+        <div class="max-w-6xl mx-auto px-6">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl font-black mb-4">Let's Connect</h2>
+                <a href="mailto:akashkailashiyabusiness@gmail.com" class="inline-block bg-white text-black px-6 py-3 rounded-full font-bold text-sm mb-8 active:scale-95 transition-transform">
+                    akashkailashiyabusiness@gmail.com
+                </a>
+            </div>
+
+            <!-- Social Links App-Style Grid -->
+            <div class="grid grid-cols-2 md:grid-cols-3 gap-4 mb-16 max-w-3xl mx-auto">
+                <a href="https://www.youtube.com/akashkailashiya" target="_blank" rel="noopener noreferrer" class="bg-[#151515] border border-white/5 hover:bg-[#202020] p-4 rounded-2xl flex flex-col items-center gap-3 transition-colors">
+                    <i data-lucide="youtube" class="w-7 h-7 text-red-500"></i>
+                    <span class="font-bold text-sm text-gray-300">YouTube</span>
+                </a>
+                <a href="https://github.com/aakashkailashiya" target="_blank" rel="noopener noreferrer" class="bg-[#151515] border border-white/5 hover:bg-[#202020] p-4 rounded-2xl flex flex-col items-center gap-3 transition-colors">
+                    <i data-lucide="github" class="w-7 h-7 text-white"></i>
+                    <span class="font-bold text-sm text-gray-300">GitHub</span>
+                </a>
+                <a href="https://in.linkedin.com/in/aakash-kailashiya-28b30118b" target="_blank" rel="noopener noreferrer" class="bg-[#151515] border border-white/5 hover:bg-[#202020] p-4 rounded-2xl flex flex-col items-center gap-3 transition-colors">
+                    <i data-lucide="linkedin" class="w-7 h-7 text-blue-500"></i>
+                    <span class="font-bold text-sm text-gray-300">LinkedIn</span>
+                </a>
+                <a href="https://www.instagram.com/akash_kailashiya/" target="_blank" rel="noopener noreferrer" class="bg-[#151515] border border-white/5 hover:bg-[#202020] p-4 rounded-2xl flex flex-col items-center gap-3 transition-colors">
+                    <i data-lucide="instagram" class="w-7 h-7 text-pink-500"></i>
+                    <span class="font-bold text-sm text-gray-300">Instagram</span>
+                </a>
+                <a href="https://www.pinterest.com/akashkailashiya/" target="_blank" rel="noopener noreferrer" class="bg-[#151515] border border-white/5 hover:bg-[#202020] p-4 rounded-2xl flex flex-col items-center gap-3 transition-colors">
+                    <div class="w-7 h-7 bg-red-600 text-white rounded-full flex items-center justify-center font-bold font-serif italic pb-0.5">P</div>
+                    <span class="font-bold text-sm text-gray-300">Pinterest</span>
+                </a>
+                <a href="https://aktipshindi.blogspot.com/" target="_blank" rel="noopener noreferrer" class="bg-[#151515] border border-white/5 hover:bg-[#202020] p-4 rounded-2xl flex flex-col items-center gap-3 transition-colors">
+                    <i data-lucide="globe" class="w-7 h-7 text-orange-500"></i>
+                    <span class="font-bold text-sm text-gray-300">Blog</span>
+                </a>
+            </div>
+            
+            <div class="text-center text-gray-600 text-sm font-medium">
+                <p>© <span id="year"></span> Akash Kailashiya.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Mobile Bottom Navigation Bar -->
+    <div class="md:hidden fixed bottom-0 left-0 right-0 bg-[#0a0a0a]/90 backdrop-blur-xl border-t border-white/10 z-50 pb-safe pt-2 px-6" role="navigation" aria-label="Mobile navigation">
+        <div class="flex justify-between items-center h-16 max-w-sm mx-auto">
+            <button onclick="scrollToSection('home')" class="mobile-nav-btn flex flex-col items-center justify-center w-16 gap-1 transition-all text-gray-500 hover:text-gray-300" data-target="home" aria-label="Go to Home section">
+                <i data-lucide="home" class="w-5 h-5 transition-colors duration-300" aria-hidden="true"></i>
+                <span class="text-[10px] font-bold transition-colors duration-300">Home</span>
+            </button>
+            
+            <button onclick="scrollToSection('about')" class="mobile-nav-btn flex flex-col items-center justify-center w-16 gap-1 transition-all text-gray-500 hover:text-gray-300" data-target="about" aria-label="Go to About section">
+                <i data-lucide="user" class="w-5 h-5 transition-colors duration-300" aria-hidden="true"></i>
+                <span class="text-[10px] font-bold transition-colors duration-300">About</span>
+            </button>
+
+            <button onclick="scrollToSection('apps')" class="mobile-nav-btn flex flex-col items-center justify-center w-16 gap-1 transition-all text-gray-500 hover:text-gray-300" data-target="apps" aria-label="Go to Work section">
+                <i data-lucide="layout-grid" class="w-5 h-5 transition-colors duration-300" aria-hidden="true"></i>
+                <span class="text-[10px] font-bold transition-colors duration-300">Work</span>
+            </button>
+
+            <button onclick="scrollToSection('contact')" class="mobile-nav-btn flex flex-col items-center justify-center w-16 gap-1 transition-all text-gray-500 hover:text-gray-300" data-target="contact" aria-label="Go to Contact section">
+                <i data-lucide="mail" class="w-5 h-5 transition-colors duration-300" aria-hidden="true"></i>
+                <span class="text-[10px] font-bold transition-colors duration-300">Contact</span>
+            </button>
+        </div>
+    </div>
+
+    <!-- Application Logic -->
+    <script>
+        // Initialize Lucide Icons
+        lucide.createIcons();
+
+        // Set Current Year
+        document.getElementById('year').textContent = new Date().getFullYear();
+
+        // Elements
+        const desktopNav = document.getElementById('desktop-nav');
+        const mobileNav = document.getElementById('mobile-nav');
+        const sections = ['home', 'about', 'apps', 'contact'];
+        const navLinks = document.querySelectorAll('.nav-link');
+        const mobileNavBtns = document.querySelectorAll('.mobile-nav-btn');
+
+        // Scroll Logic
+        function handleScroll() {
+            // Navbar Background Change
+            if (window.scrollY > 10) {
+                // Desktop
+                desktopNav.classList.remove('bg-transparent', 'py-6');
+                desktopNav.classList.add('bg-[#0a0a0a]/80', 'backdrop-blur-xl', 'border-b', 'border-white/10', 'py-4');
+                // Mobile
+                mobileNav.classList.remove('bg-transparent');
+                mobileNav.classList.add('bg-[#0a0a0a]/90', 'backdrop-blur-lg', 'border-b', 'border-white/10');
+            } else {
+                // Desktop
+                desktopNav.classList.add('bg-transparent', 'py-6');
+                desktopNav.classList.remove('bg-[#0a0a0a]/80', 'backdrop-blur-xl', 'border-b', 'border-white/10', 'py-4');
+                // Mobile
+                mobileNav.classList.add('bg-transparent');
+                mobileNav.classList.remove('bg-[#0a0a0a]/90', 'backdrop-blur-lg', 'border-b', 'border-white/10');
+            }
+
+            // Scroll Spy (Active Tabs)
+            let current = 'home';
+            for (let i = 0; i < sections.length; i++) {
+                const element = document.getElementById(sections[i]);
+                if (element && window.scrollY >= (element.offsetTop - 200)) {
+                    current = sections[i];
+                }
+            }
+            updateActiveTabs(current);
+        }
+
+        // Update Active Navigation States
+        function updateActiveTabs(activeTabId) {
+            // Update Desktop Nav
+            navLinks.forEach(link => {
+                if (link.dataset.target === activeTabId) {
+                    link.classList.add('text-white');
+                    link.classList.remove('text-gray-400');
+                } else {
+                    link.classList.remove('text-white');
+                    link.classList.add('text-gray-400');
+                }
+            });
+
+            // Update Mobile Bottom Nav (Applies .tab-active custom class)
+            mobileNavBtns.forEach(btn => {
+                if (btn.dataset.target === activeTabId) {
+                    btn.classList.add('tab-active');
+                    btn.classList.remove('text-gray-500');
+                } else {
+                    btn.classList.remove('tab-active');
+                    btn.classList.add('text-gray-500');
+                }
+            });
+        }
+
+        // Smooth Scroll to Section
+        function scrollToSection(id) {
+            updateActiveTabs(id);
+            const element = document.getElementById(id);
+            if (element) {
+                // Offset calculation for sticky header (desktop vs mobile)
+                const offset = id === 'home' ? 0 : element.offsetTop - 80;
+                window.scrollTo({ top: offset, behavior: 'smooth' });
+            }
+        }
+
+        // Attach scroll event listener
+        window.addEventListener('scroll', handleScroll);
+        
+        // Initial setup on load
+        handleScroll();
+    </script>
+</body>
+</html>
