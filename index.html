@@ -17,10 +17,8 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
     
-    <!-- Tailwind CSS CDN -->
+    <!-- Tailwind CSS via CDN with JIT (supports arbitrary values) -->
     <script src="https://cdn.tailwindcss.com"></script>
-    
-    <!-- Tailwind Configuration (Crucial for GitHub Pages stability) -->
     <script>
         tailwind.config = {
             theme: {
@@ -36,51 +34,37 @@
     <!-- Lucide Icons -->
     <script src="https://unpkg.com/lucide@latest"></script>
 
+    <!-- Minimal custom styles for safe areas and active tab states -->
     <style>
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
         }
-
         html {
             scroll-behavior: smooth;
         }
-
         body {
-            background-color: #0a0a0a;
-            color: #e5e7eb;
             -webkit-tap-highlight-color: transparent;
         }
-
         .pb-safe {
             padding-bottom: max(0px, env(safe-area-inset-bottom));
         }
-
         .tab-active {
             color: white !important;
         }
-
         .tab-active i {
             color: white !important;
         }
-
         .tab-active span {
             color: white !important;
         }
-
-        button, a {
-            transition: all 0.3s ease;
-        }
-
-        img {
-            display: block;
-            max-width: 100%;
-            height: auto;
-        }
-
         [data-lucide] {
             display: inline-block;
+        }
+        /* Smooth transitions */
+        button, a {
+            transition: all 0.3s ease;
         }
     </style>
 </head>
@@ -450,10 +434,10 @@
 
     <!-- Scripts -->
     <script>
-        // Set Year
+        // Set current year in footer
         document.getElementById('year').textContent = new Date().getFullYear();
 
-        // Navbar Logic
+        // Navbar background change on scroll + active tab highlight
         const desktopNav = document.getElementById('desktop-nav');
         const mobileNav = document.getElementById('mobile-nav');
         const sections = ['home', 'about', 'apps', 'contact'];
@@ -461,6 +445,7 @@
         const mobileNavBtns = document.querySelectorAll('.mobile-nav-btn');
 
         function handleScroll() {
+            // update navbar background
             if (window.scrollY > 10) {
                 desktopNav.classList.remove('bg-transparent', 'py-6');
                 desktopNav.classList.add('bg-[#0a0a0a]/80', 'backdrop-blur-xl', 'border-b', 'border-white/10', 'py-4');
@@ -473,6 +458,7 @@
                 mobileNav.classList.remove('bg-[#0a0a0a]/90', 'backdrop-blur-lg', 'border-b', 'border-white/10');
             }
 
+            // determine active section
             let current = 'home';
             for (let i = 0; i < sections.length; i++) {
                 const element = document.getElementById(sections[i]);
@@ -515,9 +501,12 @@
         }
 
         window.addEventListener('scroll', handleScroll);
-        handleScroll(); // Trigger on load
+        handleScroll(); // initial call
 
-        // Ensure Lucide icons render perfectly even if network delays
+        // Expose scrollToSection globally for inline onclick handlers
+        window.scrollToSection = scrollToSection;
+
+        // Lucide icons
         document.addEventListener('DOMContentLoaded', () => {
             if (typeof lucide !== 'undefined') {
                 lucide.createIcons();
