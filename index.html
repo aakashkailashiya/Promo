@@ -197,10 +197,19 @@
         .bg-card-light { background-color: #1a1a1a; }
         .bg-black\/50 { background-color: rgba(0,0,0,0.5); }
         .bg-green-600 { background-color: #16a34a; }
+        .bg-green-500 { background-color: #22c55e; }
         .bg-blue-600 { background-color: #2563eb; }
+        .bg-blue-500\/10 { background-color: rgba(59,130,246,0.1); }
+        .bg-green-500\/10 { background-color: rgba(34,197,94,0.1); }
+        .bg-purple-500\/10 { background-color: rgba(168,85,247,0.1); }
+        .bg-orange-500\/10 { background-color: rgba(249,115,22,0.1); }
+        .bg-cyan-500\/10 { background-color: rgba(6,182,212,0.1); }
+        .bg-indigo-500\/10 { background-color: rgba(99,102,241,0.1); }
         .bg-white { background-color: #fff; }
         .bg-red-600 { background-color: #dc2626; }
         .bg-gray-900 { background-color: #111827; }
+        .bg-\[\#202020\] { background-color: #202020; }
+        .bg-\[\#252525\] { background-color: #252525; }
 
         /* gradient backgrounds */
         .bg-gradient-to-tr { background-image: linear-gradient(to top right, var(--tw-gradient-stops)); }
@@ -318,6 +327,8 @@
         .hover\:bg-blue-500:hover { background-color: #3b82f6; }
         .hover\:bg-gray-200:hover { background-color: #e5e7eb; }
         .hover\:bg-\[\#252525\]:hover { background-color: #252525; }
+        .hover\:text-blue-400:hover { color: #60a5fa; }
+        .hover\:text-white:hover { color: #fff; }
         .active\:scale-95:active { transform: scale(0.95); }
 
         /* opacity / group */
@@ -340,6 +351,11 @@
         }
 
         /* ---------- MEDIA QUERIES ---------- */
+        @media (max-width: 640px) {
+            .sm\:flex-row { flex-direction: row; }
+            .sm\:w-auto { width: auto; }
+        }
+
         @media (min-width: 768px) {
             .md\:block { display: block; }
             .md\:flex { display: flex; }
@@ -361,6 +377,11 @@
             .md\:text-3xl { font-size: 1.875rem; }
             .md\:text-6xl { font-size: 3.75rem; }
             .md\:space-x-8 > * + * { margin-left: 2rem; }
+            .sm\:w-full { width: 100%; }
+        }
+
+        @media (max-width: 768px) {
+            .sm\:w-full { width: 100%; }
         }
 
         /* custom container */
