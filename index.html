@@ -36,8 +36,20 @@
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap');
         
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
         body {
             -webkit-tap-highlight-color: transparent;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
         }
 
         /* Safe area padding for mobile notches */
@@ -45,13 +57,33 @@
             padding-bottom: env(safe-area-inset-bottom, 20px);
         }
 
-        /* Active tab icon fill utility */
+        /* Active tab utilities */
         .tab-active i {
-            color: white;
-            fill: white;
+            color: white !important;
         }
+        
         .tab-active span {
-            color: white;
+            color: white !important;
+        }
+
+        /* Smooth transitions */
+        button, a {
+            transition: all 0.3s ease;
+        }
+
+        /* Image optimization */
+        img {
+            display: block;
+            max-width: 100%;
+            height: auto;
+        }
+
+        /* Mobile safe area */
+        @supports (padding: max(0px)) {
+            body {
+                padding-left: max(0px, env(safe-area-inset-left));
+                padding-right: max(0px, env(safe-area-inset-right));
+            }
         }
     </style>
 </head>
