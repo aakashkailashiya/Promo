@@ -11,13 +11,13 @@
     <meta property="og:image" content="./akash_kailashiya.jpg">
     <meta name="theme-color" content="#0a0a0a">
     <title>Akash Kailashiya - Tech Creator & Developer</title>
-    
+
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
-    
-    <!-- Tailwind CSS via CDN with JIT (supports arbitrary values) -->
+
+    <!-- Tailwind JIT (for utility classes) -->
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
         tailwind.config = {
@@ -30,12 +30,13 @@
             }
         }
     </script>
-    
+
     <!-- Lucide Icons -->
     <script src="https://unpkg.com/lucide@latest"></script>
 
-    <!-- Minimal custom styles for safe areas and active tab states -->
+    <!-- FULL CSS FALLBACK – all custom colors, backgrounds, and effects defined explicitly -->
     <style>
+        /* === RESET & BASE === */
         * {
             margin: 0;
             padding: 0;
@@ -45,11 +46,106 @@
             scroll-behavior: smooth;
         }
         body {
+            background-color: #0a0a0a;
+            color: #e5e7eb;
             -webkit-tap-highlight-color: transparent;
+            font-family: Inter, -apple-system, sans-serif;
         }
         .pb-safe {
             padding-bottom: max(0px, env(safe-area-inset-bottom));
         }
+        button, a {
+            transition: all 0.3s ease;
+        }
+        img {
+            display: block;
+            max-width: 100%;
+            height: auto;
+        }
+        [data-lucide] {
+            display: inline-block;
+        }
+
+        /* === CUSTOM BACKGROUND COLORS (fallback for bg-[#...]) === */
+        .bg-\[\#0a0a0a\] { background-color: #0a0a0a !important; }
+        .bg-\[\#111\] { background-color: #111 !important; }
+        .bg-\[\#151515\] { background-color: #151515 !important; }
+        .bg-\[\#1a1a1a\] { background-color: #1a1a1a !important; }
+        .bg-black\/50 { background-color: rgba(0,0,0,0.5) !important; }
+        .bg-white\/5 { background-color: rgba(255,255,255,0.05) !important; }
+        .bg-white\/10 { background-color: rgba(255,255,255,0.1) !important; }
+        .bg-\[\#0a0a0a\]\/80 { background-color: rgba(10,10,10,0.8) !important; }
+        .bg-\[\#0a0a0a\]\/90 { background-color: rgba(10,10,10,0.9) !important; }
+        .bg-blue-500\/10 { background-color: rgba(59,130,246,0.1) !important; }
+        .bg-purple-500\/10 { background-color: rgba(168,85,247,0.1) !important; }
+        .bg-green-500\/10 { background-color: rgba(34,197,94,0.1) !important; }
+        .bg-orange-500\/10 { background-color: rgba(249,115,22,0.1) !important; }
+        .bg-cyan-500\/10 { background-color: rgba(6,182,212,0.1) !important; }
+        .bg-indigo-500\/10 { background-color: rgba(99,102,241,0.1) !important; }
+        .bg-gradient-to-b { background-image: linear-gradient(to bottom, var(--tw-gradient-stops)) !important; }
+        .from-\[\#0a0a0a\] { --tw-gradient-from: #0a0a0a; --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to, rgba(10,10,10,0)) !important; }
+        .to-\[\#111\] { --tw-gradient-to: #111 !important; }
+        .from-\[\#111\] { --tw-gradient-from: #111; --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to, rgba(17,17,17,0)) !important; }
+        .to-\[\#0a0a0a\] { --tw-gradient-to: #0a0a0a !important; }
+
+        /* === BORDER COLORS === */
+        .border-white\/5 { border-color: rgba(255,255,255,0.05) !important; }
+        .border-white\/10 { border-color: rgba(255,255,255,0.1) !important; }
+
+        /* === HOVER BACKGROUNDS === */
+        .hover\:bg-gray-200:hover { background-color: #e5e7eb !important; }
+        .hover\:bg-\[\#252525\]:hover { background-color: #252525 !important; }
+        .hover\:bg-\[\#202020\]:hover { background-color: #202020 !important; }
+        .hover\:bg-green-500:hover { background-color: #22c55e !important; }
+        .hover\:bg-blue-500:hover { background-color: #3b82f6 !important; }
+
+        /* === HOVER BORDER COLORS === */
+        .hover\:border-blue-500\/30:hover { border-color: rgba(59,130,246,0.3) !important; }
+        .hover\:border-green-500\/30:hover { border-color: rgba(34,197,94,0.3) !important; }
+        .hover\:border-purple-500\/30:hover { border-color: rgba(168,85,247,0.3) !important; }
+        .hover\:border-orange-500\/30:hover { border-color: rgba(249,115,22,0.3) !important; }
+        .hover\:border-cyan-500\/30:hover { border-color: rgba(6,182,212,0.3) !important; }
+        .hover\:border-indigo-500\/30:hover { border-color: rgba(99,102,241,0.3) !important; }
+
+        /* === TEXT COLORS === */
+        .text-white { color: #fff !important; }
+        .text-black { color: #000 !important; }
+        .text-gray-100 { color: #f3f4f6 !important; }
+        .text-gray-300 { color: #d1d5db !important; }
+        .text-gray-400 { color: #9ca3af !important; }
+        .text-gray-500 { color: #6b7280 !important; }
+        .text-gray-600 { color: #4b5563 !important; }
+        .text-blue-400 { color: #60a5fa !important; }
+        .text-blue-500 { color: #3b82f6 !important; }
+        .text-red-500 { color: #ef4444 !important; }
+        .text-red-600 { color: #dc2626 !important; }
+        .text-green-400 { color: #4ade80 !important; }
+        .text-green-600 { color: #16a34a !important; }
+        .text-purple-400 { color: #c084fc !important; }
+        .text-orange-400 { color: #fb923c !important; }
+        .text-orange-500 { color: #f97316 !important; }
+        .text-cyan-400 { color: #22d3ee !important; }
+        .text-indigo-400 { color: #818cf8 !important; }
+        .text-pink-500 { color: #ec4899 !important; }
+
+        /* === ICON CONTAINER / FALLBACK === */
+        .w-7.h-7.bg-red-600.rounded-full.flex.items-center.justify-center {
+            background-color: #dc2626;
+            border-radius: 9999px;
+            width: 1.75rem;
+            height: 1.75rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        /* === CUSTOM RADII & BLUR === */
+        .rounded-\[2rem\] { border-radius: 2rem !important; }
+        .blur-\[100px\] { filter: blur(100px) !important; }
+        .backdrop-blur-xl { backdrop-filter: blur(24px) !important; }
+        .backdrop-blur-lg { backdrop-filter: blur(16px) !important; }
+
+        /* === ACTIVE TAB (for mobile nav) === */
         .tab-active {
             color: white !important;
         }
@@ -59,12 +155,10 @@
         .tab-active span {
             color: white !important;
         }
-        [data-lucide] {
-            display: inline-block;
-        }
-        /* Smooth transitions */
-        button, a {
-            transition: all 0.3s ease;
+
+        /* === HELPER FOR MD:W-FIT === */
+        @media (min-width: 768px) {
+            .md\:w-fit { width: fit-content !important; }
         }
     </style>
 </head>
@@ -434,10 +528,10 @@
 
     <!-- Scripts -->
     <script>
-        // Set current year in footer
+        // Set Year
         document.getElementById('year').textContent = new Date().getFullYear();
 
-        // Navbar background change on scroll + active tab highlight
+        // Navbar Logic
         const desktopNav = document.getElementById('desktop-nav');
         const mobileNav = document.getElementById('mobile-nav');
         const sections = ['home', 'about', 'apps', 'contact'];
@@ -445,7 +539,6 @@
         const mobileNavBtns = document.querySelectorAll('.mobile-nav-btn');
 
         function handleScroll() {
-            // update navbar background
             if (window.scrollY > 10) {
                 desktopNav.classList.remove('bg-transparent', 'py-6');
                 desktopNav.classList.add('bg-[#0a0a0a]/80', 'backdrop-blur-xl', 'border-b', 'border-white/10', 'py-4');
@@ -458,7 +551,6 @@
                 mobileNav.classList.remove('bg-[#0a0a0a]/90', 'backdrop-blur-lg', 'border-b', 'border-white/10');
             }
 
-            // determine active section
             let current = 'home';
             for (let i = 0; i < sections.length; i++) {
                 const element = document.getElementById(sections[i]);
@@ -501,9 +593,9 @@
         }
 
         window.addEventListener('scroll', handleScroll);
-        handleScroll(); // initial call
+        handleScroll(); // Trigger on load
 
-        // Expose scrollToSection globally for inline onclick handlers
+        // Expose function globally for inline onclick handlers
         window.scrollToSection = scrollToSection;
 
         // Lucide icons
