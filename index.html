@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
     <meta name="description" content="Tech Creator & Developer - Building high-performance Android apps, professional web projects, and breaking down complex AI & tech concepts for 28,000+ subscribers.">
     <meta name="keywords" content="Android Developer, Web Developer, Tech Creator, App Developer, AI">
     <meta name="author" content="Akash Kailashiya">
@@ -11,261 +11,900 @@
     <meta property="og:image" content="./akash_kailashiya.jpg">
     <meta name="theme-color" content="#0a0a0a">
     <title>Akash Kailashiya - Tech Creator & Developer</title>
-
+    
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
-
-    <!-- Tailwind JIT (for utility classes) -->
-    <script src="https://cdn.tailwindcss.com"></script>
-    <script>
-        tailwind.config = {
-            theme: {
-                extend: {
-                    fontFamily: {
-                        sans: ['Inter', '-apple-system', 'sans-serif'],
-                    }
-                }
-            }
-        }
-    </script>
-
+    
     <!-- Lucide Icons -->
     <script src="https://unpkg.com/lucide@latest"></script>
 
-    <!-- FULL CSS FALLBACK – all custom colors, backgrounds, and effects defined explicitly -->
     <style>
-        /* === RESET & BASE === */
+        /* === CSS Variables & Theme === */
+        :root {
+            --bg-dark: #0a0a0a;
+            --bg-darker: #111111;
+            --bg-card: #151515;
+            --bg-card-alt: #1a1a1a;
+            
+            --text-main: #ffffff;
+            --text-sec: #e5e7eb;
+            --text-muted: #9ca3af;
+            
+            --border-light: rgba(255, 255, 255, 0.05);
+            --border-med: rgba(255, 255, 255, 0.1);
+            
+            --blue: #3b82f6;
+            --blue-glow: rgba(59, 130, 246, 0.1);
+            --purple: #a855f7;
+            --purple-glow: rgba(168, 85, 247, 0.1);
+            --green: #22c55e;
+            --green-glow: rgba(34, 197, 94, 0.1);
+            --orange: #f97316;
+            --orange-glow: rgba(249, 115, 22, 0.1);
+            --cyan: #06b6d4;
+            --cyan-glow: rgba(6, 182, 212, 0.1);
+            --indigo: #6366f1;
+            --indigo-glow: rgba(99, 102, 241, 0.1);
+            --pink: #ec4899;
+            --red: #ef4444;
+        }
+
+        /* === Reset & Base === */
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
         }
+
         html {
             scroll-behavior: smooth;
         }
+
         body {
-            background-color: #0a0a0a;
-            color: #e5e7eb;
+            background-color: var(--bg-dark);
+            color: var(--text-sec);
+            font-family: 'Inter', -apple-system, sans-serif;
             -webkit-tap-highlight-color: transparent;
-            font-family: Inter, -apple-system, sans-serif;
+            overflow-x: hidden;
+            line-height: 1.6;
         }
-        .pb-safe {
-            padding-bottom: max(0px, env(safe-area-inset-bottom));
+
+        ::selection {
+            background-color: var(--blue);
+            color: white;
         }
-        button, a {
+
+        a, button {
+            text-decoration: none;
+            color: inherit;
+            border: none;
+            background: none;
+            cursor: pointer;
+            font-family: inherit;
             transition: all 0.3s ease;
         }
+
         img {
             display: block;
             max-width: 100%;
             height: auto;
         }
-        [data-lucide] {
-            display: inline-block;
+
+        .container {
+            max-width: 1152px;
+            margin: 0 auto;
+            padding: 0 1.5rem;
         }
 
-        /* === CUSTOM BACKGROUND COLORS (fallback for bg-[#...]) === */
-        .bg-\[\#0a0a0a\] { background-color: #0a0a0a !important; }
-        .bg-\[\#111\] { background-color: #111 !important; }
-        .bg-\[\#151515\] { background-color: #151515 !important; }
-        .bg-\[\#1a1a1a\] { background-color: #1a1a1a !important; }
-        .bg-black\/50 { background-color: rgba(0,0,0,0.5) !important; }
-        .bg-white\/5 { background-color: rgba(255,255,255,0.05) !important; }
-        .bg-white\/10 { background-color: rgba(255,255,255,0.1) !important; }
-        .bg-\[\#0a0a0a\]\/80 { background-color: rgba(10,10,10,0.8) !important; }
-        .bg-\[\#0a0a0a\]\/90 { background-color: rgba(10,10,10,0.9) !important; }
-        .bg-blue-500\/10 { background-color: rgba(59,130,246,0.1) !important; }
-        .bg-purple-500\/10 { background-color: rgba(168,85,247,0.1) !important; }
-        .bg-green-500\/10 { background-color: rgba(34,197,94,0.1) !important; }
-        .bg-orange-500\/10 { background-color: rgba(249,115,22,0.1) !important; }
-        .bg-cyan-500\/10 { background-color: rgba(6,182,212,0.1) !important; }
-        .bg-indigo-500\/10 { background-color: rgba(99,102,241,0.1) !important; }
-        .bg-gradient-to-b { background-image: linear-gradient(to bottom, var(--tw-gradient-stops)) !important; }
-        .from-\[\#0a0a0a\] { --tw-gradient-from: #0a0a0a; --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to, rgba(10,10,10,0)) !important; }
-        .to-\[\#111\] { --tw-gradient-to: #111 !important; }
-        .from-\[\#111\] { --tw-gradient-from: #111; --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to, rgba(17,17,17,0)) !important; }
-        .to-\[\#0a0a0a\] { --tw-gradient-to: #0a0a0a !important; }
+        /* === Typography === */
+        .text-gradient {
+            background: linear-gradient(to right, var(--blue), var(--purple));
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
 
-        /* === BORDER COLORS === */
-        .border-white\/5 { border-color: rgba(255,255,255,0.05) !important; }
-        .border-white\/10 { border-color: rgba(255,255,255,0.1) !important; }
+        .section-title {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            margin-bottom: 2rem;
+        }
 
-        /* === HOVER BACKGROUNDS === */
-        .hover\:bg-gray-200:hover { background-color: #e5e7eb !important; }
-        .hover\:bg-\[\#252525\]:hover { background-color: #252525 !important; }
-        .hover\:bg-\[\#202020\]:hover { background-color: #202020 !important; }
-        .hover\:bg-green-500:hover { background-color: #22c55e !important; }
-        .hover\:bg-blue-500:hover { background-color: #3b82f6 !important; }
+        .section-title h2 {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--text-main);
+        }
 
-        /* === HOVER BORDER COLORS === */
-        .hover\:border-blue-500\/30:hover { border-color: rgba(59,130,246,0.3) !important; }
-        .hover\:border-green-500\/30:hover { border-color: rgba(34,197,94,0.3) !important; }
-        .hover\:border-purple-500\/30:hover { border-color: rgba(168,85,247,0.3) !important; }
-        .hover\:border-orange-500\/30:hover { border-color: rgba(249,115,22,0.3) !important; }
-        .hover\:border-cyan-500\/30:hover { border-color: rgba(6,182,212,0.3) !important; }
-        .hover\:border-indigo-500\/30:hover { border-color: rgba(99,102,241,0.3) !important; }
+        @media (min-width: 768px) {
+            .section-title h2 { font-size: 1.875rem; }
+        }
 
-        /* === TEXT COLORS === */
-        .text-white { color: #fff !important; }
-        .text-black { color: #000 !important; }
-        .text-gray-100 { color: #f3f4f6 !important; }
-        .text-gray-300 { color: #d1d5db !important; }
-        .text-gray-400 { color: #9ca3af !important; }
-        .text-gray-500 { color: #6b7280 !important; }
-        .text-gray-600 { color: #4b5563 !important; }
-        .text-blue-400 { color: #60a5fa !important; }
-        .text-blue-500 { color: #3b82f6 !important; }
-        .text-red-500 { color: #ef4444 !important; }
-        .text-red-600 { color: #dc2626 !important; }
-        .text-green-400 { color: #4ade80 !important; }
-        .text-green-600 { color: #16a34a !important; }
-        .text-purple-400 { color: #c084fc !important; }
-        .text-orange-400 { color: #fb923c !important; }
-        .text-orange-500 { color: #f97316 !important; }
-        .text-cyan-400 { color: #22d3ee !important; }
-        .text-indigo-400 { color: #818cf8 !important; }
-        .text-pink-500 { color: #ec4899 !important; }
+        /* === Navigation === */
+        .desktop-nav {
+            display: none;
+            position: fixed;
+            top: 0;
+            width: 100%;
+            z-index: 50;
+            transition: all 0.3s ease;
+            padding: 1.5rem 0;
+            background: transparent;
+        }
 
-        /* === ICON CONTAINER / FALLBACK === */
-        .w-7.h-7.bg-red-600.rounded-full.flex.items-center.justify-center {
-            background-color: #dc2626;
-            border-radius: 9999px;
-            width: 1.75rem;
-            height: 1.75rem;
+        .desktop-nav.scrolled {
+            background: rgba(10, 10, 10, 0.8);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border-bottom: 1px solid var(--border-med);
+            padding: 1rem 0;
+        }
+
+        .desktop-nav .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 900;
+            letter-spacing: -0.05em;
+            color: var(--text-main);
+        }
+
+        .logo span { color: var(--blue); }
+        .logo:hover { color: var(--blue); }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+        }
+
+        .nav-link {
+            font-size: 0.875rem;
+            font-weight: 600;
+            text-transform: capitalize;
+            color: var(--text-muted);
+        }
+
+        .nav-link:hover, .nav-link.active {
+            color: var(--blue);
+        }
+
+        .mobile-top-nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            z-index: 40;
+            padding: 1rem 1.5rem;
+            text-align: center;
+            background: transparent;
+            transition: all 0.3s ease;
+        }
+
+        .mobile-top-nav.scrolled {
+            background: rgba(10, 10, 10, 0.9);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border-bottom: 1px solid var(--border-med);
+        }
+
+        .mobile-bottom-nav {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: rgba(10, 10, 10, 0.9);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border-top: 1px solid var(--border-med);
+            z-index: 50;
+            padding-bottom: max(0px, env(safe-area-inset-bottom));
+        }
+
+        .mobile-nav-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            height: 4rem;
+            max-width: 400px;
+            margin: 0 auto;
+            padding: 0 1.5rem;
+        }
+
+        .mobile-nav-btn {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 0.25rem;
+            color: var(--text-muted);
+            width: 4rem;
+        }
+
+        .mobile-nav-btn span {
+            font-size: 0.625rem;
+            font-weight: 700;
+        }
+
+        .mobile-nav-btn.active {
+            color: var(--text-main);
+        }
+
+        @media (min-width: 768px) {
+            .desktop-nav { display: block; }
+            .mobile-top-nav, .mobile-bottom-nav { display: none; }
+        }
+
+        /* === Hero Section === */
+        .hero {
+            padding: 7rem 1.5rem 4rem;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            width: 100%;
+        }
+
+        @media (min-width: 768px) {
+            .hero { padding-top: 12rem; }
+        }
+
+        .avatar-container {
+            position: relative;
+            margin-bottom: 2rem;
+        }
+
+        .avatar-glow {
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(to top right, var(--blue), var(--purple));
+            border-radius: 50%;
+            filter: blur(24px);
+            opacity: 0.5;
+            transition: opacity 0.5s ease;
+        }
+
+        .avatar-container:hover .avatar-glow {
+            opacity: 0.8;
+        }
+
+        .avatar-ring {
+            position: relative;
+            padding: 0.25rem;
+            border-radius: 50%;
+            background: linear-gradient(to top right, var(--blue), var(--purple));
+        }
+
+        .avatar-inner {
+            background-color: var(--bg-dark);
+            border-radius: 50%;
+            padding: 0.375rem;
+        }
+
+        .avatar-img-wrapper {
+            width: 7rem;
+            height: 7rem;
+            border-radius: 50%;
+            background-color: var(--bg-card-alt);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: 1px solid var(--border-med);
+            overflow: hidden;
+            position: relative;
+        }
+
+        @media (min-width: 768px) {
+            .avatar-img-wrapper { width: 9rem; height: 9rem; }
+        }
+
+        .avatar-img-wrapper img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .hero h1 {
+            font-size: 2.25rem;
+            font-weight: 800;
+            letter-spacing: -0.025em;
+            color: var(--text-main);
+            margin-bottom: 1rem;
+        }
+
+        @media (min-width: 768px) {
+            .hero h1 { font-size: 3.75rem; }
+        }
+
+        .hero-subtitle {
+            color: var(--blue);
+            font-weight: 600;
+            margin-bottom: 1.5rem;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            font-size: 0.875rem;
+        }
+
+        @media (min-width: 768px) {
+            .hero-subtitle { font-size: 1rem; }
+        }
+
+        .hero-desc {
+            font-size: 1rem;
+            color: var(--text-muted);
+            max-width: 42rem;
+            margin: 0 auto 2.5rem;
+            line-height: 1.625;
+        }
+
+        @media (min-width: 768px) {
+            .hero-desc { font-size: 1.25rem; }
+        }
+
+        .hero-btns {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+            width: 100%;
+            max-width: 400px;
+        }
+
+        @media (min-width: 640px) {
+            .hero-btns {
+                flex-direction: row;
+                width: auto;
+                max-width: none;
+            }
+        }
+
+        .btn {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+            padding: 1rem 2rem;
+            border-radius: 1rem;
+            font-weight: 700;
+            font-size: 1rem;
+            transition: all 0.2s ease;
+        }
+
+        .btn:active { transform: scale(0.95); }
+
+        .btn-primary {
+            background-color: white;
+            color: black;
+        }
+        .btn-primary:hover { background-color: #e5e5e5; }
+
+        .btn-secondary {
+            background-color: var(--bg-card-alt);
+            color: white;
+            border: 1px solid var(--border-med);
+        }
+        .btn-secondary:hover { background-color: #252525; }
+
+        /* === About & Stats Section === */
+        .section-about {
+            padding: 3rem 0;
+            background: linear-gradient(to bottom, var(--bg-dark), var(--bg-darker));
+        }
+
+        .icon-box {
+            width: 2.5rem;
+            height: 2.5rem;
+            border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
         }
 
-        /* === CUSTOM RADII & BLUR === */
-        .rounded-\[2rem\] { border-radius: 2rem !important; }
-        .blur-\[100px\] { filter: blur(100px) !important; }
-        .backdrop-blur-xl { backdrop-filter: blur(24px) !important; }
-        .backdrop-blur-lg { backdrop-filter: blur(16px) !important; }
+        .icon-box.blue { background-color: var(--blue-glow); color: var(--blue); }
+        .icon-box.purple { background-color: var(--purple-glow); color: var(--purple); }
+        .icon-box.green { background-color: var(--green-glow); color: var(--green); }
+        .icon-box.orange { background-color: var(--orange-glow); color: var(--orange); }
+        .icon-box.cyan { background-color: var(--cyan-glow); color: var(--cyan); }
+        .icon-box.indigo { background-color: var(--indigo-glow); color: var(--indigo); }
 
-        /* === ACTIVE TAB (for mobile nav) === */
-        .tab-active {
-            color: white !important;
-        }
-        .tab-active i {
-            color: white !important;
-        }
-        .tab-active span {
-            color: white !important;
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1rem;
+            margin-bottom: 2.5rem;
         }
 
-        /* === HELPER FOR MD:W-FIT === */
         @media (min-width: 768px) {
-            .md\:w-fit { width: fit-content !important; }
+            .stats-grid { grid-template-columns: repeat(4, 1fr); }
         }
+
+        .stat-card {
+            background-color: var(--bg-card);
+            padding: 1.25rem;
+            border-radius: 1.5rem;
+            border: 1px solid var(--border-light);
+        }
+
+        .stat-card h3 {
+            font-size: 1.875rem;
+            font-weight: 900;
+            color: var(--text-main);
+            margin-bottom: 0.25rem;
+        }
+
+        .stat-card p {
+            color: var(--text-muted);
+            font-size: 0.75rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        .about-text-card {
+            background-color: var(--bg-card);
+            padding: 1.5rem;
+            border-radius: 1.5rem;
+            border: 1px solid var(--border-light);
+        }
+
+        @media (min-width: 768px) {
+            .about-text-card { padding: 2rem; }
+        }
+
+        .about-text-card p {
+            color: #d1d5db;
+            font-size: 1rem;
+            margin-bottom: 1rem;
+        }
+        @media (min-width: 768px) {
+            .about-text-card p { font-size: 1.125rem; }
+        }
+        .about-text-card p:last-child { margin-bottom: 0; }
+
+        /* === Apps Section === */
+        .section-apps {
+            padding: 4rem 0;
+            background-color: var(--bg-darker);
+        }
+
+        .apps-list {
+            display: flex;
+            flex-direction: column;
+            gap: 2rem;
+        }
+
+        @media (min-width: 768px) {
+            .apps-list { gap: 3rem; }
+        }
+
+        .app-card {
+            background-color: var(--bg-card-alt);
+            border-radius: 2rem;
+            padding: 1.5rem;
+            border: 1px solid var(--border-med);
+            position: relative;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            gap: 2rem;
+        }
+
+        @media (min-width: 768px) {
+            .app-card {
+                flex-direction: row;
+                padding: 2.5rem;
+            }
+        }
+
+        .app-blob {
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 16rem;
+            height: 16rem;
+            border-radius: 50%;
+            filter: blur(100px);
+            pointer-events: none;
+        }
+
+        .app-blob.green { background-color: var(--green-glow); }
+        .app-blob.blue { background-color: var(--blue-glow); }
+
+        .app-content { flex: 1; z-index: 1; }
+        .app-media { flex: 1; z-index: 1; display: flex; align-items: center; justify-content: center; width: 100%; }
+
+        .app-header {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .app-icon {
+            width: 4rem;
+            height: 4rem;
+            border-radius: 1rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+        }
+        
+        .app-icon.green { background-color: var(--green-glow); color: var(--green); }
+        .app-icon.blue { background-color: var(--blue-glow); color: var(--blue); }
+
+        .app-title {
+            font-size: 1.5rem;
+            font-weight: 900;
+            color: var(--text-main);
+            margin-bottom: 0.25rem;
+        }
+
+        @media (min-width: 768px) {
+            .app-title { font-size: 1.875rem; }
+        }
+
+        .app-subtitle { font-size: 0.875rem; font-weight: 600; }
+        .app-subtitle.green { color: var(--green); }
+        .app-subtitle.blue { color: var(--blue); }
+
+        .app-desc {
+            color: var(--text-muted);
+            margin-bottom: 1.5rem;
+        }
+
+        .app-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            margin-bottom: 2rem;
+        }
+
+        .tag {
+            padding: 0.375rem 0.75rem;
+            background-color: rgba(0, 0, 0, 0.5);
+            border: 1px solid var(--border-light);
+            border-radius: 0.75rem;
+            font-size: 0.75rem;
+            font-weight: 700;
+            color: #d1d5db;
+        }
+
+        .btn-install {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+            padding: 1rem 1.5rem;
+            border-radius: 1rem;
+            font-weight: 700;
+            color: white;
+            width: 100%;
+        }
+
+        @media (min-width: 768px) {
+            .btn-install { width: fit-content; }
+        }
+
+        .btn-install.green { background-color: #16a34a; }
+        .btn-install.green:hover { background-color: #15803d; }
+        .btn-install.blue { background-color: #2563eb; }
+        .btn-install.blue:hover { background-color: #1d4ed8; }
+
+        .video-container {
+            width: 100%;
+            aspect-ratio: 16 / 9;
+            border-radius: 1rem;
+            overflow: hidden;
+            background-color: black;
+            border: 1px solid var(--border-med);
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+        }
+
+        .video-container iframe {
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+
+        /* === Grid Sections (Clients & Open Source) === */
+        .section-grid {
+            padding: 4rem 0;
+        }
+        
+        .bg-gradient-clients {
+            background: linear-gradient(to bottom, var(--bg-darker), var(--bg-dark));
+        }
+        
+        .bg-dark { background-color: var(--bg-dark); }
+
+        .cards-grid {
+            display: grid;
+            gap: 1.5rem;
+        }
+
+        @media (min-width: 768px) {
+            .cards-grid { grid-template-columns: repeat(3, 1fr); }
+        }
+
+        .project-card {
+            background-color: var(--bg-card);
+            padding: 1.5rem;
+            border-radius: 1.5rem;
+            border: 1px solid var(--border-light);
+            display: flex;
+            flex-direction: column;
+            height: 100%;
+        }
+
+        @media (min-width: 768px) {
+            .project-card { padding: 2rem; }
+        }
+
+        .project-card:hover { transform: translateY(-4px); }
+        .project-card:active { transform: scale(0.98); }
+
+        /* Hover border colors */
+        .project-card.hover-blue:hover { border-color: rgba(59, 130, 246, 0.3); }
+        .project-card.hover-green:hover { border-color: rgba(34, 197, 94, 0.3); }
+        .project-card.hover-purple:hover { border-color: rgba(168, 85, 247, 0.3); }
+        .project-card.hover-orange:hover { border-color: rgba(249, 115, 22, 0.3); }
+        .project-card.hover-cyan:hover { border-color: rgba(6, 182, 212, 0.3); }
+        .project-card.hover-indigo:hover { border-color: rgba(99, 102, 241, 0.3); }
+
+        .project-icon {
+            width: 3.5rem;
+            height: 3.5rem;
+            border-radius: 1rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 1.5rem;
+            transition: transform 0.3s ease;
+        }
+
+        .project-card:hover .project-icon { transform: scale(1.1); }
+
+        .project-icon.blue { background-color: var(--blue-glow); color: var(--blue); }
+        .project-icon.green { background-color: var(--green-glow); color: var(--green); }
+        .project-icon.purple { background-color: var(--purple-glow); color: var(--purple); }
+        .project-icon.orange { background-color: var(--orange-glow); color: var(--orange); }
+        .project-icon.cyan { background-color: var(--cyan-glow); color: var(--cyan); }
+        .project-icon.indigo { background-color: var(--indigo-glow); color: var(--indigo); }
+
+        .project-title {
+            font-size: 1.25rem;
+            font-weight: 700;
+            color: var(--text-main);
+            margin-bottom: 0.5rem;
+            transition: color 0.3s ease;
+        }
+
+        .project-card.hover-blue:hover .project-title { color: var(--blue); }
+        .project-card.hover-green:hover .project-title { color: var(--green); }
+        .project-card.hover-purple:hover .project-title { color: var(--purple); }
+        .project-card.hover-orange:hover .project-title { color: var(--orange); }
+        .project-card.hover-cyan:hover .project-title { color: var(--cyan); }
+        .project-card.hover-indigo:hover .project-title { color: var(--indigo); }
+
+        .project-desc {
+            color: var(--text-muted);
+            font-size: 0.875rem;
+            margin-bottom: 1.5rem;
+            flex-grow: 1;
+        }
+
+        .project-link {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-size: 0.875rem;
+            font-weight: 700;
+            color: #d1d5db;
+            margin-top: auto;
+            padding-top: 1rem;
+            border-top: 1px solid var(--border-light);
+        }
+
+        .project-card:hover .project-link { color: var(--text-main); }
+
+        /* === Footer Section === */
+        .footer {
+            background-color: var(--bg-dark);
+            padding: 3rem 0;
+            border-top: 1px solid var(--border-med);
+            padding-bottom: 6rem; /* space for mobile nav */
+        }
+
+        @media (min-width: 768px) {
+            .footer { padding-bottom: 3rem; }
+        }
+
+        .footer-header {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        .footer-header h2 {
+            font-size: 1.875rem;
+            font-weight: 900;
+            color: var(--text-main);
+            margin-bottom: 1rem;
+        }
+
+        .email-btn {
+            display: inline-block;
+            background-color: white;
+            color: black;
+            padding: 0.75rem 1.5rem;
+            border-radius: 9999px;
+            font-weight: 700;
+            font-size: 0.875rem;
+        }
+
+        .email-btn:active { transform: scale(0.95); }
+
+        .social-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1rem;
+            max-width: 48rem;
+            margin: 0 auto 4rem;
+        }
+
+        @media (min-width: 768px) {
+            .social-grid { grid-template-columns: repeat(3, 1fr); }
+        }
+
+        .social-card {
+            background-color: var(--bg-card);
+            border: 1px solid var(--border-light);
+            padding: 1rem;
+            border-radius: 1rem;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 0.75rem;
+        }
+
+        .social-card:hover { background-color: #202020; }
+        
+        .social-card span {
+            font-weight: 700;
+            font-size: 0.875rem;
+            color: #d1d5db;
+        }
+
+        .pinterest-icon {
+            width: 1.75rem;
+            height: 1.75rem;
+            background-color: var(--red);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            font-family: serif;
+            font-style: italic;
+            padding-bottom: 0.125rem;
+        }
+
+        .copyright {
+            text-align: center;
+            color: #4b5563;
+            font-size: 0.875rem;
+            font-weight: 500;
+        }
+
     </style>
 </head>
-<body class="min-h-screen bg-[#0a0a0a] text-gray-100 font-sans selection:bg-blue-500 selection:text-white pb-20 md:pb-0 overflow-x-hidden">
+<body>
 
     <!-- Desktop Top Navbar -->
-    <nav id="desktop-nav" class="hidden md:block fixed w-full z-50 transition-all duration-300 bg-transparent py-6">
-        <div class="max-w-6xl mx-auto px-6 flex justify-between items-center">
-            <div class="text-2xl font-black tracking-tight text-white cursor-pointer hover:text-blue-400" onclick="scrollToSection('home')">
-                Akash<span class="text-blue-500">.</span>
+    <nav id="desktop-nav" class="desktop-nav">
+        <div class="container">
+            <div class="logo cursor-pointer" onclick="scrollToSection('home')">
+                Akash<span>.</span>
             </div>
-            
-            <div class="flex space-x-8 text-sm font-semibold text-gray-400">
-                <button onclick="scrollToSection('home')" class="nav-link capitalize transition-colors hover:text-blue-400" data-target="home">home</button>
-                <button onclick="scrollToSection('about')" class="nav-link capitalize transition-colors hover:text-blue-400" data-target="about">about</button>
-                <button onclick="scrollToSection('apps')" class="nav-link capitalize transition-colors hover:text-blue-400" data-target="apps">apps</button>
-                <button onclick="scrollToSection('contact')" class="nav-link capitalize transition-colors hover:text-blue-400" data-target="contact">contact</button>
+            <div class="nav-links">
+                <button onclick="scrollToSection('home')" class="nav-link" data-target="home">home</button>
+                <button onclick="scrollToSection('about')" class="nav-link" data-target="about">about</button>
+                <button onclick="scrollToSection('apps')" class="nav-link" data-target="apps">apps</button>
+                <button onclick="scrollToSection('contact')" class="nav-link" data-target="contact">contact</button>
             </div>
         </div>
     </nav>
 
     <!-- Mobile Top App Bar -->
-    <div id="mobile-nav" class="md:hidden fixed top-0 w-full z-40 transition-all duration-300 bg-transparent py-4 px-6">
-        <div class="text-xl font-black text-white text-center tracking-tight">
-            Akash<span class="text-blue-500">K.</span>
+    <div id="mobile-nav" class="mobile-top-nav">
+        <div class="logo">
+            Akash<span>K.</span>
         </div>
     </div>
 
     <!-- Hero Section -->
-    <section id="home" class="pt-28 md:pt-48 pb-16 px-6 max-w-6xl mx-auto flex flex-col items-center text-center w-full">
-        <!-- Profile Avatar -->
-        <div class="relative mb-8 group">
-            <div class="absolute inset-0 bg-gradient-to-tr from-blue-600 to-purple-600 rounded-full blur-xl opacity-50 group-hover:opacity-80 transition-opacity duration-500"></div>
-            <div class="relative p-1 rounded-full bg-gradient-to-tr from-blue-500 to-purple-500">
-                <div class="bg-[#0a0a0a] rounded-full p-1.5">
-                    <div class="w-28 h-28 md:w-36 md:h-36 rounded-full bg-gray-900 flex items-center justify-center border border-white/10 overflow-hidden relative">
-                        <img 
-                            src="./akash_kailashiya.jpg"
-                            alt="Akash Kailashiya"
-                            class="w-full h-full object-cover"
-                            loading="lazy"
-                            onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';"
-                        />
-                        <!-- Fallback icon if image fails to load -->
-                        <div class="hidden w-full h-full bg-gradient-to-br from-gray-800 to-black items-center justify-center">
-                            <i data-lucide="code" class="w-10 h-10 text-gray-500"></i>
+    <section id="home" class="hero">
+        <div class="container" style="display:flex; flex-direction:column; align-items:center;">
+            
+            <div class="avatar-container">
+                <div class="avatar-glow"></div>
+                <div class="avatar-ring">
+                    <div class="avatar-inner">
+                        <div class="avatar-img-wrapper">
+                            <img 
+                                src="./akash_kailashiya.jpg"
+                                alt="Akash Kailashiya"
+                                loading="lazy"
+                                onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';"
+                            />
+                            <!-- Fallback icon -->
+                            <div style="display:none; width:100%; height:100%; background:linear-gradient(to bottom right, #1f2937, #000); align-items:center; justify-content:center;">
+                                <i data-lucide="code" style="width:2.5rem; height:2.5rem; color:#6b7280;"></i>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
-        </div>
 
-        <h1 class="text-4xl md:text-6xl font-extrabold tracking-tight mb-4 text-white">
-            Akash Kailashiya
-        </h1>
-        <p class="text-blue-400 font-semibold mb-6 uppercase tracking-widest text-sm md:text-base">Tech Creator • App & Web Developer</p>
-        
-        <p class="text-base md:text-xl text-gray-400 max-w-2xl mx-auto mb-10 leading-relaxed px-4">
-            Building high-performance Android apps, professional web projects, and breaking down complex AI & tech concepts for over 28,000 subscribers.
-        </p>
+            <h1>Akash Kailashiya</h1>
+            <p class="hero-subtitle">Tech Creator • App & Web Developer</p>
+            
+            <p class="hero-desc">
+                Building high-performance Android apps, professional web projects, and breaking down complex AI & tech concepts for over 28,000 subscribers.
+            </p>
 
-        <div class="flex flex-col sm:flex-row gap-4 w-full sm:w-auto px-4">
-            <a href="https://www.youtube.com/akashkailashiya" target="_blank" rel="noopener noreferrer" class="flex items-center justify-center gap-2 bg-white text-black hover:bg-gray-200 px-8 py-4 rounded-2xl font-bold transition-all w-full sm:w-auto active:scale-95">
-                <i data-lucide="youtube" class="w-5 h-5 text-red-600"></i>
-                Watch Channel
-            </a>
-            <button onclick="scrollToSection('apps')" class="flex items-center justify-center gap-2 bg-[#1a1a1a] hover:bg-[#252525] text-white px-8 py-4 rounded-2xl font-bold transition-all border border-white/10 w-full sm:w-auto active:scale-95">
-                <i data-lucide="layout-grid" class="w-5 h-5"></i>
-                View Work
-            </button>
+            <div class="hero-btns">
+                <a href="https://www.youtube.com/akashkailashiya" target="_blank" rel="noopener noreferrer" class="btn btn-primary">
+                    <i data-lucide="youtube" style="width:1.25rem; height:1.25rem; color:#dc2626;"></i>
+                    Watch Channel
+                </a>
+                <button onclick="scrollToSection('apps')" class="btn btn-secondary">
+                    <i data-lucide="layout-grid" style="width:1.25rem; height:1.25rem;"></i>
+                    View Work
+                </button>
+            </div>
         </div>
     </section>
 
     <!-- About Section -->
-    <section id="about" class="py-12 bg-gradient-to-b from-[#0a0a0a] to-[#111]">
-        <div class="max-w-6xl mx-auto px-6">
-            <div class="flex items-center gap-3 mb-8">
-                <div class="w-10 h-10 rounded-full bg-blue-500/10 flex items-center justify-center">
-                    <i data-lucide="user" class="w-5 h-5 text-blue-400"></i>
+    <section id="about" class="section-about">
+        <div class="container">
+            <div class="section-title">
+                <div class="icon-box blue">
+                    <i data-lucide="user" style="width:1.25rem; height:1.25rem;"></i>
                 </div>
-                <h2 class="text-2xl md:text-3xl font-bold">About & Stats</h2>
+                <h2>About & Stats</h2>
             </div>
             
-            <div class="grid grid-cols-2 md:grid-cols-4 gap-4 mb-10">
-                <div class="bg-[#151515] p-5 rounded-3xl border border-white/5">
-                    <h3 class="text-3xl font-black text-white mb-1">28K+</h3>
-                    <p class="text-gray-500 text-xs font-bold uppercase tracking-wider">Subscribers</p>
+            <div class="stats-grid">
+                <div class="stat-card">
+                    <h3>28K+</h3>
+                    <p>Subscribers</p>
                 </div>
-                <div class="bg-[#151515] p-5 rounded-3xl border border-white/5">
-                    <h3 class="text-3xl font-black text-white mb-1">3.5K+</h3>
-                    <p class="text-gray-500 text-xs font-bold uppercase tracking-wider">Videos</p>
+                <div class="stat-card">
+                    <h3>3.5K+</h3>
+                    <p>Videos</p>
                 </div>
-                <div class="bg-[#151515] p-5 rounded-3xl border border-white/5">
-                    <h3 class="text-3xl font-black text-white mb-1">20+</h3>
-                    <p class="text-gray-500 text-xs font-bold uppercase tracking-wider">Apps & Sites</p>
+                <div class="stat-card">
+                    <h3>20+</h3>
+                    <p>Apps & Sites</p>
                 </div>
-                <div class="bg-[#151515] p-5 rounded-3xl border border-white/5">
-                    <h3 class="text-3xl font-black text-white mb-1">Local</h3>
-                    <p class="text-gray-500 text-xs font-bold uppercase tracking-wider">AI Tools</p>
+                <div class="stat-card">
+                    <h3>Local</h3>
+                    <p>AI Tools</p>
                 </div>
             </div>
 
-            <div class="bg-[#151515] p-6 md:p-8 rounded-3xl border border-white/5">
-                <p class="text-gray-300 text-base md:text-lg leading-relaxed mb-4">
+            <div class="about-text-card">
+                <p>
                     I am a technology content creator and developer from India. My passion lies in exploring the cutting edge of tech—from hardware hacking with ESP32 and 3D printing to diving deep into Artificial Intelligence and Android OS features.
                 </p>
-                <p class="text-gray-300 text-base md:text-lg leading-relaxed">
+                <p>
                     When I'm not making videos, I'm coding. I build privacy-first Android applications, design local AI-powered web tools, and develop professional websites for businesses to help them grow their digital presence.
                 </p>
             </div>
@@ -273,89 +912,85 @@
     </section>
 
     <!-- Apps Section -->
-    <section id="apps" class="py-16 bg-[#111]">
-        <div class="max-w-6xl mx-auto px-6">
-            <div class="flex items-center gap-3 mb-8">
-                <div class="w-10 h-10 rounded-full bg-purple-500/10 flex items-center justify-center">
-                    <i data-lucide="smartphone" class="w-5 h-5 text-purple-400"></i>
+    <section id="apps" class="section-apps">
+        <div class="container">
+            <div class="section-title">
+                <div class="icon-box purple">
+                    <i data-lucide="smartphone" style="width:1.25rem; height:1.25rem;"></i>
                 </div>
-                <h2 class="text-2xl md:text-3xl font-bold">Featured Apps</h2>
+                <h2>Featured Apps</h2>
             </div>
 
-            <div class="space-y-8 md:space-y-12">
+            <div class="apps-list">
                 <!-- CWealth App -->
-                <div class="bg-[#1a1a1a] rounded-[2rem] p-6 md:p-10 border border-white/10 relative overflow-hidden flex flex-col md:flex-row gap-8">
-                    <div class="absolute top-0 right-0 w-64 h-64 bg-green-500/10 rounded-full blur-[100px] pointer-events-none"></div>
+                <div class="app-card">
+                    <div class="app-blob green"></div>
                     
-                    <div class="flex-1">
-                        <div class="flex items-center gap-4 mb-6">
-                            <div class="w-16 h-16 bg-green-500/10 rounded-2xl flex items-center justify-center text-green-400 shrink-0">
-                                <i data-lucide="wallet" class="w-8 h-8"></i>
+                    <div class="app-content">
+                        <div class="app-header">
+                            <div class="app-icon green">
+                                <i data-lucide="wallet" style="width:2rem; height:2rem;"></i>
                             </div>
                             <div>
-                                <h3 class="text-2xl md:text-3xl font-black text-white mb-1">CWealth</h3>
-                                <p class="text-green-400 font-semibold text-sm">Finance Manager</p>
+                                <h3 class="app-title">CWealth</h3>
+                                <p class="app-subtitle green">Finance Manager</p>
                             </div>
                         </div>
                         
-                        <p class="text-gray-400 mb-6 leading-relaxed">
+                        <p class="app-desc">
                             A privacy-first personal finance manager where you can easily track income-expenses, manage budgets, monitor financial goals, and analyze spending. 100% offline, no sign-up required, and your data stays on your device.
                         </p>
                         
-                        <div class="flex flex-wrap gap-2 mb-8">
-                            <span class="px-3 py-1.5 bg-black/50 border border-white/5 rounded-xl text-xs font-bold text-gray-300">100% Offline</span>
-                            <span class="px-3 py-1.5 bg-black/50 border border-white/5 rounded-xl text-xs font-bold text-gray-300">Material Design 3</span>
-                            <span class="px-3 py-1.5 bg-black/50 border border-white/5 rounded-xl text-xs font-bold text-gray-300">Privacy First</span>
+                        <div class="app-tags">
+                            <span class="tag">100% Offline</span>
+                            <span class="tag">Material Design 3</span>
+                            <span class="tag">Privacy First</span>
                         </div>
                         
-                        <a href="https://play.google.com/store/apps/details?id=com.ai.cwealth" target="_blank" rel="noopener noreferrer" class="flex items-center justify-center gap-2 bg-green-600 text-white hover:bg-green-500 px-6 py-4 rounded-2xl font-bold transition-all active:scale-95 w-full md:w-fit">
-                            Install on Play Store <i data-lucide="external-link" class="w-4 h-4"></i>
+                        <a href="https://play.google.com/store/apps/details?id=com.ai.cwealth" target="_blank" rel="noopener noreferrer" class="btn-install green">
+                            Install on Play Store <i data-lucide="external-link" style="width:1rem; height:1rem;"></i>
                         </a>
                     </div>
 
-                    <!-- Video Embed -->
-                    <div class="flex-1 flex items-center justify-center w-full">
-                        <div class="w-full aspect-video rounded-2xl overflow-hidden shadow-2xl border border-white/10 bg-black">
+                    <div class="app-media">
+                        <div class="video-container">
                             <iframe 
-                                width="100%" 
-                                height="100%" 
                                 src="https://www.youtube.com/embed/oNjU_QU7zEo?rel=0&modestbranding=1" 
                                 title="CWealth App Preview" 
-                                frameborder="0" 
                                 allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
-                                allowfullscreen
-                            ></iframe>
+                                allowfullscreen>
+                            </iframe>
                         </div>
                     </div>
                 </div>
 
                 <!-- Bulk Curve App -->
-                <div class="bg-[#1a1a1a] rounded-[2rem] p-6 md:p-10 border border-white/10 relative overflow-hidden flex flex-col md:flex-row gap-8">
-                    <div class="absolute top-0 right-0 w-64 h-64 bg-blue-500/10 rounded-full blur-[100px] pointer-events-none"></div>
+                <div class="app-card">
+                    <div class="app-blob blue"></div>
                     
-                    <div class="flex-1">
-                        <div class="flex items-center gap-4 mb-6">
-                            <div class="w-16 h-16 bg-blue-500/10 rounded-2xl flex items-center justify-center text-blue-400 shrink-0">
-                                <i data-lucide="image" class="w-8 h-8"></i>
+                    <div class="app-content">
+                        <div class="app-header">
+                            <div class="app-icon blue">
+                                <i data-lucide="image" style="width:2rem; height:2rem;"></i>
                             </div>
                             <div>
-                                <h3 class="text-2xl md:text-3xl font-black text-white mb-1">Bulk Curve</h3>
-                                <p class="text-blue-400 font-semibold text-sm">Image Utility</p>
+                                <h3 class="app-title">Bulk Curve</h3>
+                                <p class="app-subtitle blue">Image Utility</p>
                             </div>
                         </div>
                         
-                        <p class="text-gray-400 mb-6 leading-relaxed">
+                        <p class="app-desc">
                             The ultimate image editing utility designed to make your images look clean and professional. Instantly add smooth, rounded corners to multiple images at once, saving you time and effort in your design workflow.
                         </p>
                         
-                        <div class="flex flex-wrap gap-2 mb-8">
-                            <span class="px-3 py-1.5 bg-black/50 border border-white/5 rounded-xl text-xs font-bold text-gray-300">Bulk Processing</span>
-                            <span class="px-3 py-1.5 bg-black/50 border border-white/5 rounded-xl text-xs font-bold text-gray-300">Custom Radius</span>
-                            <span class="px-3 py-1.5 bg-black/50 border border-white/5 rounded-xl text-xs font-bold text-gray-300">HD Output</span>
+                        <div class="app-tags">
+                            <span class="tag">Bulk Processing</span>
+                            <span class="tag">Custom Radius</span>
+                            <span class="tag">HD Output</span>
                         </div>
                         
-                        <a href="https://play.google.com/store/apps/details?id=com.b.curve" target="_blank" rel="noopener noreferrer" class="flex items-center justify-center gap-2 bg-blue-600 text-white hover:bg-blue-500 px-6 py-4 rounded-2xl font-bold transition-all active:scale-95 w-full md:w-fit">
-                            Install on Play Store <i data-lucide="external-link" class="w-4 h-4"></i>
+                        <a href="https://play.google.com/store/apps/details?id=com.b.curve" target="_blank" rel="noopener noreferrer" class="btn-install blue">
+                            Install on Play Store <i data-lucide="external-link" style="width:1rem; height:1rem;"></i>
                         </a>
                     </div>
                 </div>
@@ -364,46 +999,46 @@
     </section>
 
     <!-- Client Projects -->
-    <section class="py-16 bg-gradient-to-b from-[#111] to-[#0a0a0a]">
-        <div class="max-w-6xl mx-auto px-6">
-            <div class="flex items-center gap-3 mb-8">
-                <div class="w-10 h-10 rounded-full bg-blue-500/10 flex items-center justify-center">
-                    <i data-lucide="globe" class="w-5 h-5 text-blue-400"></i>
+    <section class="section-grid bg-gradient-clients">
+        <div class="container">
+            <div class="section-title">
+                <div class="icon-box blue">
+                    <i data-lucide="globe" style="width:1.25rem; height:1.25rem;"></i>
                 </div>
-                <h2 class="text-2xl md:text-3xl font-bold">Client Projects</h2>
+                <h2>Client Projects</h2>
             </div>
 
-            <div class="grid md:grid-cols-3 gap-6">
-                <a href="https://lvsoftech.com/" target="_blank" rel="noopener noreferrer" class="bg-[#151515] p-6 md:p-8 rounded-[2rem] border border-white/5 hover:border-blue-500/30 transition-all group active:scale-95">
-                    <div class="w-14 h-14 bg-blue-500/10 rounded-2xl flex items-center justify-center text-blue-400 mb-6 group-hover:scale-110 transition-transform">
-                        <i data-lucide="building-2" class="w-7 h-7"></i>
+            <div class="cards-grid">
+                <a href="https://lvsoftech.com/" target="_blank" rel="noopener noreferrer" class="project-card hover-blue">
+                    <div class="project-icon blue">
+                        <i data-lucide="building-2" style="width:1.75rem; height:1.75rem;"></i>
                     </div>
-                    <h3 class="text-xl font-bold text-white mb-2 group-hover:text-blue-400 transition-colors">LV Softech</h3>
-                    <p class="text-gray-400 text-sm mb-6">IT & Software Solutions</p>
-                    <div class="flex items-center gap-2 text-sm font-bold text-gray-300 group-hover:text-white transition-colors">
-                        Visit Website <i data-lucide="external-link" class="w-4 h-4"></i>
-                    </div>
-                </a>
-
-                <a href="https://seljaagro.com/" target="_blank" rel="noopener noreferrer" class="bg-[#151515] p-6 md:p-8 rounded-[2rem] border border-white/5 hover:border-green-500/30 transition-all group active:scale-95">
-                    <div class="w-14 h-14 bg-green-500/10 rounded-2xl flex items-center justify-center text-green-400 mb-6 group-hover:scale-110 transition-transform">
-                        <i data-lucide="leaf" class="w-7 h-7"></i>
-                    </div>
-                    <h3 class="text-xl font-bold text-white mb-2 group-hover:text-green-400 transition-colors">Selja Agro</h3>
-                    <p class="text-gray-400 text-sm mb-6">Agriculture & Farming</p>
-                    <div class="flex items-center gap-2 text-sm font-bold text-gray-300 group-hover:text-white transition-colors">
-                        Visit Website <i data-lucide="external-link" class="w-4 h-4"></i>
+                    <h3 class="project-title">LV Softech</h3>
+                    <p class="project-desc">IT & Software Solutions</p>
+                    <div class="project-link">
+                        Visit Website <i data-lucide="external-link" style="width:1rem; height:1rem;"></i>
                     </div>
                 </a>
 
-                <a href="https://metroconsultants.in/" target="_blank" rel="noopener noreferrer" class="bg-[#151515] p-6 md:p-8 rounded-[2rem] border border-white/5 hover:border-purple-500/30 transition-all group active:scale-95">
-                    <div class="w-14 h-14 bg-purple-500/10 rounded-2xl flex items-center justify-center text-purple-400 mb-6 group-hover:scale-110 transition-transform">
-                        <i data-lucide="briefcase" class="w-7 h-7"></i>
+                <a href="https://seljaagro.com/" target="_blank" rel="noopener noreferrer" class="project-card hover-green">
+                    <div class="project-icon green">
+                        <i data-lucide="leaf" style="width:1.75rem; height:1.75rem;"></i>
                     </div>
-                    <h3 class="text-xl font-bold text-white mb-2 group-hover:text-purple-400 transition-colors">Metro Consultants</h3>
-                    <p class="text-gray-400 text-sm mb-6">Consultancy Services</p>
-                    <div class="flex items-center gap-2 text-sm font-bold text-gray-300 group-hover:text-white transition-colors">
-                        Visit Website <i data-lucide="external-link" class="w-4 h-4"></i>
+                    <h3 class="project-title">Selja Agro</h3>
+                    <p class="project-desc">Agriculture & Farming</p>
+                    <div class="project-link">
+                        Visit Website <i data-lucide="external-link" style="width:1rem; height:1rem;"></i>
+                    </div>
+                </a>
+
+                <a href="https://metroconsultants.in/" target="_blank" rel="noopener noreferrer" class="project-card hover-purple">
+                    <div class="project-icon purple">
+                        <i data-lucide="briefcase" style="width:1.75rem; height:1.75rem;"></i>
+                    </div>
+                    <h3 class="project-title">Metro Consultants</h3>
+                    <p class="project-desc">Consultancy Services</p>
+                    <div class="project-link">
+                        Visit Website <i data-lucide="external-link" style="width:1rem; height:1rem;"></i>
                     </div>
                 </a>
             </div>
@@ -411,46 +1046,46 @@
     </section>
 
     <!-- Open Source -->
-    <section class="py-16 bg-[#0a0a0a]">
-        <div class="max-w-6xl mx-auto px-6">
-            <div class="flex items-center gap-3 mb-8">
-                <div class="w-10 h-10 rounded-full bg-orange-500/10 flex items-center justify-center">
-                    <i data-lucide="github" class="w-5 h-5 text-orange-400"></i>
+    <section class="section-grid bg-dark">
+        <div class="container">
+            <div class="section-title">
+                <div class="icon-box orange">
+                    <i data-lucide="github" style="width:1.25rem; height:1.25rem;"></i>
                 </div>
-                <h2 class="text-2xl md:text-3xl font-bold">Open Source</h2>
+                <h2>Open Source</h2>
             </div>
 
-            <div class="grid md:grid-cols-3 gap-6">
-                <a href="https://github.com/aakashkailashiya" target="_blank" rel="noopener noreferrer" class="bg-[#151515] p-6 md:p-8 rounded-[2rem] border border-white/5 hover:border-orange-500/30 transition-all group active:scale-95 flex flex-col h-full">
-                    <div class="w-14 h-14 bg-orange-500/10 rounded-2xl flex items-center justify-center text-orange-400 mb-6 group-hover:scale-110 transition-transform">
-                        <i data-lucide="cpu" class="w-7 h-7"></i>
+            <div class="cards-grid">
+                <a href="https://github.com/aakashkailashiya" target="_blank" rel="noopener noreferrer" class="project-card hover-orange">
+                    <div class="project-icon orange">
+                        <i data-lucide="cpu" style="width:1.75rem; height:1.75rem;"></i>
                     </div>
-                    <h3 class="text-xl font-bold text-white mb-2 group-hover:text-orange-400 transition-colors">Thinking AI</h3>
-                    <p class="text-gray-400 text-sm mb-6 flex-grow">Local AI-powered Multi-Perspective Analyzers. Change how you analyze problems using LM Studio and prompt engineering.</p>
-                    <div class="flex items-center gap-2 text-sm font-bold text-gray-300 group-hover:text-white transition-colors mt-auto pt-4 border-t border-white/5">
-                        View Repository <i data-lucide="github" class="w-4 h-4"></i>
-                    </div>
-                </a>
-
-                <a href="https://github.com/aakashkailashiya/Heal-OS" target="_blank" rel="noopener noreferrer" class="bg-[#151515] p-6 md:p-8 rounded-[2rem] border border-white/5 hover:border-cyan-500/30 transition-all group active:scale-95 flex flex-col h-full">
-                    <div class="w-14 h-14 bg-cyan-500/10 rounded-2xl flex items-center justify-center text-cyan-400 mb-6 group-hover:scale-110 transition-transform">
-                        <i data-lucide="activity" class="w-7 h-7"></i>
-                    </div>
-                    <h3 class="text-xl font-bold text-white mb-2 group-hover:text-cyan-400 transition-colors">Heal-OS</h3>
-                    <p class="text-gray-400 text-sm mb-6 flex-grow">A custom operating system project focused on advanced device performance, privacy, and system-level optimizations.</p>
-                    <div class="flex items-center gap-2 text-sm font-bold text-gray-300 group-hover:text-white transition-colors mt-auto pt-4 border-t border-white/5">
-                        View Repository <i data-lucide="github" class="w-4 h-4"></i>
+                    <h3 class="project-title">Thinking AI</h3>
+                    <p class="project-desc">Local AI-powered Multi-Perspective Analyzers. Change how you analyze problems using LM Studio and prompt engineering.</p>
+                    <div class="project-link">
+                        View Repository <i data-lucide="github" style="width:1rem; height:1rem;"></i>
                     </div>
                 </a>
 
-                <a href="https://github.com/aakashkailashiya/AiDev" target="_blank" rel="noopener noreferrer" class="bg-[#151515] p-6 md:p-8 rounded-[2rem] border border-white/5 hover:border-indigo-500/30 transition-all group active:scale-95 flex flex-col h-full">
-                    <div class="w-14 h-14 bg-indigo-500/10 rounded-2xl flex items-center justify-center text-indigo-400 mb-6 group-hover:scale-110 transition-transform">
-                        <i data-lucide="terminal" class="w-7 h-7"></i>
+                <a href="https://github.com/aakashkailashiya/Heal-OS" target="_blank" rel="noopener noreferrer" class="project-card hover-cyan">
+                    <div class="project-icon cyan">
+                        <i data-lucide="activity" style="width:1.75rem; height:1.75rem;"></i>
                     </div>
-                    <h3 class="text-xl font-bold text-white mb-2 group-hover:text-indigo-400 transition-colors">AiDev</h3>
-                    <p class="text-gray-400 text-sm mb-6 flex-grow">An integrated AI development toolset designed to streamline your coding workflow, bringing intelligent automation to your projects.</p>
-                    <div class="flex items-center gap-2 text-sm font-bold text-gray-300 group-hover:text-white transition-colors mt-auto pt-4 border-t border-white/5">
-                        View Repository <i data-lucide="github" class="w-4 h-4"></i>
+                    <h3 class="project-title">Heal-OS</h3>
+                    <p class="project-desc">A custom operating system project focused on advanced device performance, privacy, and system-level optimizations.</p>
+                    <div class="project-link">
+                        View Repository <i data-lucide="github" style="width:1rem; height:1rem;"></i>
+                    </div>
+                </a>
+
+                <a href="https://github.com/aakashkailashiya/AiDev" target="_blank" rel="noopener noreferrer" class="project-card hover-indigo">
+                    <div class="project-icon indigo">
+                        <i data-lucide="terminal" style="width:1.75rem; height:1.75rem;"></i>
+                    </div>
+                    <h3 class="project-title">AiDev</h3>
+                    <p class="project-desc">An integrated AI development toolset designed to streamline your coding workflow, bringing intelligent automation to your projects.</p>
+                    <div class="project-link">
+                        View Repository <i data-lucide="github" style="width:1rem; height:1rem;"></i>
                     </div>
                 </a>
             </div>
@@ -458,76 +1093,79 @@
     </section>
 
     <!-- Contact Footer -->
-    <footer id="contact" class="bg-[#0a0a0a] pt-12 pb-12 border-t border-white/10">
-        <div class="max-w-6xl mx-auto px-6">
-            <div class="text-center mb-12">
-                <h2 class="text-3xl font-black mb-4">Let's Connect</h2>
-                <a href="mailto:akashkailashiyabusiness@gmail.com" class="inline-block bg-white text-black px-6 py-3 rounded-full font-bold text-sm mb-8 active:scale-95 transition-transform">
+    <footer id="contact" class="footer">
+        <div class="container">
+            <div class="footer-header">
+                <h2>Let's Connect</h2>
+                <a href="mailto:akashkailashiyabusiness@gmail.com" class="email-btn">
                     akashkailashiyabusiness@gmail.com
                 </a>
             </div>
 
-            <!-- Social Links -->
-            <div class="grid grid-cols-2 md:grid-cols-3 gap-4 mb-16 max-w-3xl mx-auto">
-                <a href="https://www.youtube.com/akashkailashiya" target="_blank" class="bg-[#151515] border border-white/5 hover:bg-[#202020] p-4 rounded-2xl flex flex-col items-center gap-3 transition-colors">
-                    <i data-lucide="youtube" class="w-7 h-7 text-red-500"></i>
-                    <span class="font-bold text-sm text-gray-300">YouTube</span>
+            <div class="social-grid">
+                <a href="https://www.youtube.com/akashkailashiya" target="_blank" class="social-card">
+                    <i data-lucide="youtube" style="width:1.75rem; height:1.75rem; color:var(--red);"></i>
+                    <span>YouTube</span>
                 </a>
-                <a href="https://github.com/aakashkailashiya" target="_blank" class="bg-[#151515] border border-white/5 hover:bg-[#202020] p-4 rounded-2xl flex flex-col items-center gap-3 transition-colors">
-                    <i data-lucide="github" class="w-7 h-7 text-white"></i>
-                    <span class="font-bold text-sm text-gray-300">GitHub</span>
+                <a href="https://github.com/aakashkailashiya" target="_blank" class="social-card">
+                    <i data-lucide="github" style="width:1.75rem; height:1.75rem; color:white;"></i>
+                    <span>GitHub</span>
                 </a>
-                <a href="https://in.linkedin.com/in/aakash-kailashiya-28b30118b" target="_blank" class="bg-[#151515] border border-white/5 hover:bg-[#202020] p-4 rounded-2xl flex flex-col items-center gap-3 transition-colors">
-                    <i data-lucide="linkedin" class="w-7 h-7 text-blue-500"></i>
-                    <span class="font-bold text-sm text-gray-300">LinkedIn</span>
+                <a href="https://in.linkedin.com/in/aakash-kailashiya-28b30118b" target="_blank" class="social-card">
+                    <i data-lucide="linkedin" style="width:1.75rem; height:1.75rem; color:var(--blue);"></i>
+                    <span>LinkedIn</span>
                 </a>
-                <a href="https://www.instagram.com/akash_kailashiya/" target="_blank" class="bg-[#151515] border border-white/5 hover:bg-[#202020] p-4 rounded-2xl flex flex-col items-center gap-3 transition-colors">
-                    <i data-lucide="instagram" class="w-7 h-7 text-pink-500"></i>
-                    <span class="font-bold text-sm text-gray-300">Instagram</span>
+                <a href="https://www.instagram.com/akash_kailashiya/" target="_blank" class="social-card">
+                    <i data-lucide="instagram" style="width:1.75rem; height:1.75rem; color:var(--pink);"></i>
+                    <span>Instagram</span>
                 </a>
-                <a href="https://www.pinterest.com/akashkailashiya/" target="_blank" class="bg-[#151515] border border-white/5 hover:bg-[#202020] p-4 rounded-2xl flex flex-col items-center gap-3 transition-colors">
-                    <div class="w-7 h-7 bg-red-600 text-white rounded-full flex items-center justify-center font-bold font-serif italic pb-0.5">P</div>
-                    <span class="font-bold text-sm text-gray-300">Pinterest</span>
+                <a href="https://www.pinterest.com/akashkailashiya/" target="_blank" class="social-card">
+                    <div class="pinterest-icon">P</div>
+                    <span>Pinterest</span>
                 </a>
-                <a href="https://aktipshindi.blogspot.com/" target="_blank" class="bg-[#151515] border border-white/5 hover:bg-[#202020] p-4 rounded-2xl flex flex-col items-center gap-3 transition-colors">
-                    <i data-lucide="globe" class="w-7 h-7 text-orange-500"></i>
-                    <span class="font-bold text-sm text-gray-300">Blog</span>
+                <a href="https://aktipshindi.blogspot.com/" target="_blank" class="social-card">
+                    <i data-lucide="globe" style="width:1.75rem; height:1.75rem; color:var(--orange);"></i>
+                    <span>Blog</span>
                 </a>
             </div>
             
-            <div class="text-center text-gray-600 text-sm font-medium">
+            <div class="copyright">
                 <p>© <span id="year"></span> Akash Kailashiya.</p>
             </div>
         </div>
     </footer>
 
     <!-- Mobile Bottom Navigation -->
-    <div class="md:hidden fixed bottom-0 left-0 right-0 bg-[#0a0a0a]/90 backdrop-blur-xl border-t border-white/10 z-50 pb-safe pt-2 px-6">
-        <div class="flex justify-between items-center h-16 max-w-sm mx-auto">
-            <button onclick="scrollToSection('home')" class="mobile-nav-btn flex flex-col items-center justify-center w-16 gap-1 transition-all text-gray-500 hover:text-gray-300" data-target="home">
-                <i data-lucide="home" class="w-5 h-5"></i>
-                <span class="text-[10px] font-bold">Home</span>
+    <div class="mobile-bottom-nav">
+        <div class="mobile-nav-content">
+            <button onclick="scrollToSection('home')" class="mobile-nav-btn" data-target="home">
+                <i data-lucide="home" style="width:1.25rem; height:1.25rem;"></i>
+                <span>Home</span>
             </button>
-            
-            <button onclick="scrollToSection('about')" class="mobile-nav-btn flex flex-col items-center justify-center w-16 gap-1 transition-all text-gray-500 hover:text-gray-300" data-target="about">
-                <i data-lucide="user" class="w-5 h-5"></i>
-                <span class="text-[10px] font-bold">About</span>
+            <button onclick="scrollToSection('about')" class="mobile-nav-btn" data-target="about">
+                <i data-lucide="user" style="width:1.25rem; height:1.25rem;"></i>
+                <span>About</span>
             </button>
-
-            <button onclick="scrollToSection('apps')" class="mobile-nav-btn flex flex-col items-center justify-center w-16 gap-1 transition-all text-gray-500 hover:text-gray-300" data-target="apps">
-                <i data-lucide="layout-grid" class="w-5 h-5"></i>
-                <span class="text-[10px] font-bold">Work</span>
+            <button onclick="scrollToSection('apps')" class="mobile-nav-btn" data-target="apps">
+                <i data-lucide="layout-grid" style="width:1.25rem; height:1.25rem;"></i>
+                <span>Work</span>
             </button>
-
-            <button onclick="scrollToSection('contact')" class="mobile-nav-btn flex flex-col items-center justify-center w-16 gap-1 transition-all text-gray-500 hover:text-gray-300" data-target="contact">
-                <i data-lucide="mail" class="w-5 h-5"></i>
-                <span class="text-[10px] font-bold">Contact</span>
+            <button onclick="scrollToSection('contact')" class="mobile-nav-btn" data-target="contact">
+                <i data-lucide="mail" style="width:1.25rem; height:1.25rem;"></i>
+                <span>Contact</span>
             </button>
         </div>
     </div>
 
     <!-- Scripts -->
     <script>
+        // Initialize Icons
+        document.addEventListener('DOMContentLoaded', () => {
+            if (typeof lucide !== 'undefined') {
+                lucide.createIcons();
+            }
+        });
+
         // Set Year
         document.getElementById('year').textContent = new Date().getFullYear();
 
@@ -539,18 +1177,16 @@
         const mobileNavBtns = document.querySelectorAll('.mobile-nav-btn');
 
         function handleScroll() {
+            // Header styling on scroll
             if (window.scrollY > 10) {
-                desktopNav.classList.remove('bg-transparent', 'py-6');
-                desktopNav.classList.add('bg-[#0a0a0a]/80', 'backdrop-blur-xl', 'border-b', 'border-white/10', 'py-4');
-                mobileNav.classList.remove('bg-transparent');
-                mobileNav.classList.add('bg-[#0a0a0a]/90', 'backdrop-blur-lg', 'border-b', 'border-white/10');
+                desktopNav.classList.add('scrolled');
+                mobileNav.classList.add('scrolled');
             } else {
-                desktopNav.classList.add('bg-transparent', 'py-6');
-                desktopNav.classList.remove('bg-[#0a0a0a]/80', 'backdrop-blur-xl', 'border-b', 'border-white/10', 'py-4');
-                mobileNav.classList.add('bg-transparent');
-                mobileNav.classList.remove('bg-[#0a0a0a]/90', 'backdrop-blur-lg', 'border-b', 'border-white/10');
+                desktopNav.classList.remove('scrolled');
+                mobileNav.classList.remove('scrolled');
             }
 
+            // Update active state
             let current = 'home';
             for (let i = 0; i < sections.length; i++) {
                 const element = document.getElementById(sections[i]);
@@ -564,21 +1200,17 @@
         function updateActiveTabs(activeTabId) {
             navLinks.forEach(link => {
                 if (link.dataset.target === activeTabId) {
-                    link.classList.add('text-white');
-                    link.classList.remove('text-gray-400');
+                    link.classList.add('active');
                 } else {
-                    link.classList.remove('text-white');
-                    link.classList.add('text-gray-400');
+                    link.classList.remove('active');
                 }
             });
 
             mobileNavBtns.forEach(btn => {
                 if (btn.dataset.target === activeTabId) {
-                    btn.classList.add('tab-active');
-                    btn.classList.remove('text-gray-500');
+                    btn.classList.add('active');
                 } else {
-                    btn.classList.remove('tab-active');
-                    btn.classList.add('text-gray-500');
+                    btn.classList.remove('active');
                 }
             });
         }
@@ -594,16 +1226,6 @@
 
         window.addEventListener('scroll', handleScroll);
         handleScroll(); // Trigger on load
-
-        // Expose function globally for inline onclick handlers
-        window.scrollToSection = scrollToSection;
-
-        // Lucide icons
-        document.addEventListener('DOMContentLoaded', () => {
-            if (typeof lucide !== 'undefined') {
-                lucide.createIcons();
-            }
-        });
     </script>
 </body>
 </html>
