@@ -1,0 +1,376 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Akash Kailashiya | Tech Creator & Developer</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg: #050505;
+            --card: #0c0c0c;
+            --accent: #3b82f6;
+            --border: rgba(255, 255, 255, 0.08);
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--bg);
+            color: #efefef;
+            scroll-behavior: smooth;
+        }
+
+        .glass {
+            background: rgba(12, 12, 12, 0.8);
+            backdrop-filter: blur(14px);
+            border: 1px solid var(--border);
+        }
+
+        .bento-card {
+            background: var(--card);
+            border: 1px solid var(--border);
+            border-radius: 28px;
+            transition: all 0.4s cubic-bezier(0.2, 1, 0.3, 1);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .bento-card:hover {
+            border-color: rgba(255, 255, 255, 0.2);
+            transform: translateY(-4px);
+            box-shadow: 0 20px 40px -15px rgba(0,0,0,0.5);
+        }
+
+        .video-container {
+            border-radius: 18px;
+            overflow: hidden;
+            background: #000;
+            border: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        .badge {
+            font-size: 10px;
+            font-weight: 900;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            padding: 4px 10px;
+            border-radius: 99px;
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        @keyframes marquee {
+            0% { transform: translateX(0); }
+            100% { transform: translateX(-50%); }
+        }
+        .animate-marquee {
+            display: flex;
+            animation: marquee 30s linear infinite;
+        }
+
+        .glow-overlay {
+            position: absolute;
+            inset: 0;
+            background: radial-gradient(circle at var(--x, 50%) var(--y, 50%), rgba(59, 130, 246, 0.1) 0%, transparent 50%);
+            pointer-events: none;
+        }
+    </style>
+</head>
+<body class="selection:bg-blue-600/40">
+
+    <!-- Floating Nav -->
+    <nav class="fixed top-6 left-1/2 -translate-x-1/2 z-[100] w-[90%] max-w-3xl">
+        <div class="glass py-3 px-6 rounded-full flex justify-between items-center shadow-2xl border-white/5">
+            <div class="font-black text-xl tracking-tighter">AKASH<span class="text-blue-500">.</span></div>
+            <div class="hidden md:flex gap-8 text-[10px] font-bold uppercase tracking-widest text-gray-400">
+                <a href="#apps" class="hover:text-white">Apps</a>
+                <a href="#github" class="hover:text-white">Open Source</a>
+                <a href="#web" class="hover:text-white">Web</a>
+                <a href="#content" class="hover:text-white">Content</a>
+            </div>
+            <a href="https://youtube.com/akashkailashiya" target="_blank" class="bg-blue-600 px-4 py-2 rounded-full text-[10px] font-black uppercase tracking-widest hover:bg-blue-500 transition-all">Subscribe</a>
+        </div>
+    </nav>
+
+    <!-- Hero -->
+    <section class="pt-48 pb-24 px-6 max-w-6xl mx-auto flex flex-col items-center text-center">
+        <div class="relative group mb-10">
+            <div class="absolute inset-0 bg-blue-600 rounded-full blur-3xl opacity-20 group-hover:opacity-40 transition-opacity"></div>
+            <img src="https://raw.githubusercontent.com/aakashkailashiya/Promo/main/akash_kailashiya.jpg" class="w-32 h-32 md:w-40 md:h-40 rounded-full border-4 border-white/5 p-1 relative z-10 object-cover grayscale hover:grayscale-0 transition-all duration-500" onerror="this.src='https://api.dicebear.com/7.x/avataaars/svg?seed=Akash'">
+        </div>
+        
+        <h1 class="text-6xl md:text-8xl font-[950] tracking-tighter leading-[0.9] mb-8">
+            The Lab for <br><span class="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-indigo-500">Modern Tech.</span>
+        </h1>
+        
+        <p class="text-gray-400 text-lg md:text-xl max-w-2xl mx-auto mb-12 font-medium">
+            Building privacy-first Android applications, local AI tools, and professional web architecture for <span class="text-white font-bold">28,000+</span> subscribers.
+        </p>
+
+        <div class="grid grid-cols-2 md:grid-cols-4 gap-4 w-full max-w-4xl">
+            <div class="glass p-6 rounded-3xl border-white/5">
+                <div class="text-3xl font-black mb-1">28K+</div>
+                <div class="text-[9px] font-bold uppercase tracking-widest text-gray-500">Subscribers</div>
+            </div>
+            <div class="glass p-6 rounded-3xl border-white/5">
+                <div class="text-3xl font-black mb-1">3.5K+</div>
+                <div class="text-[9px] font-bold uppercase tracking-widest text-gray-500">Videos</div>
+            </div>
+            <div class="glass p-6 rounded-3xl border-white/5">
+                <div class="text-3xl font-black mb-1">10+</div>
+                <div class="text-[9px] font-bold uppercase tracking-widest text-gray-500">Android Apps</div>
+            </div>
+            <div class="glass p-6 rounded-3xl border-white/5">
+                <div class="text-3xl font-black mb-1">AI</div>
+                <div class="text-[9px] font-bold uppercase tracking-widest text-gray-500">Tools Developed</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Android Apps Section -->
+    <section id="apps" class="py-24 px-6 max-w-7xl mx-auto">
+        <div class="flex items-center gap-4 mb-12">
+            <h2 class="text-3xl font-black tracking-tighter">Software Lab</h2>
+            <div class="h-px flex-1 bg-white/5"></div>
+            <span class="badge text-blue-400 border-blue-500/20">Production Apps</span>
+        </div>
+
+        <div class="grid lg:grid-cols-2 gap-8">
+            <!-- CWealth -->
+            <div class="bento-card p-8 md:p-12 group">
+                <div class="flex flex-col md:flex-row gap-10 items-center">
+                    <div class="flex-1 space-y-6">
+                        <div class="badge text-green-400">Finance • 100% Privacy</div>
+                        <h3 class="text-4xl font-black tracking-tighter">CWealth</h3>
+                        <p class="text-gray-400 leading-relaxed">Personal finance tracking with no cloud sync. All data is encrypted and stored locally on your Android device.</p>
+                        <a href="https://play.google.com/store/apps/details?id=com.ai.cwealth" target="_blank" class="inline-flex items-center gap-3 bg-white text-black px-6 py-3 rounded-2xl font-black text-sm hover:scale-105 transition-all">
+                            Google Play <i data-lucide="smartphone"></i>
+                        </a>
+                    </div>
+                    <div class="flex-1 w-full">
+                        <div class="video-container aspect-video">
+                            <iframe class="w-full h-full" src="https://www.youtube.com/embed/oNjU_QU7zEo?modestbranding=1" frameborder="0" allowfullscreen></iframe>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Bulk Curve -->
+            <div class="bento-card p-8 md:p-12 flex flex-col justify-between">
+                <div>
+                    <div class="badge text-blue-400 mb-6">Utility • UI Tools</div>
+                    <h3 class="text-4xl font-black tracking-tighter mb-4">Bulk Curve</h3>
+                    <p class="text-gray-400 mb-8 max-w-sm">Efficiently add rounded corners to thousands of images at once. A must-have tool for designers and developers.</p>
+                </div>
+                <div class="flex justify-between items-end">
+                    <div class="flex gap-2">
+                        <span class="badge">Kotlin</span>
+                        <span class="badge">Image Processing</span>
+                    </div>
+                    <a href="https://play.google.com/store/apps/details?id=com.b.curve" target="_blank" class="w-14 h-14 bg-blue-600 rounded-2xl flex items-center justify-center hover:rotate-12 transition-all">
+                        <i data-lucide="external-link"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- GitHub Section -->
+    <section id="github" class="py-24 px-6 bg-white/[0.01] border-y border-white/5">
+        <div class="max-w-7xl mx-auto">
+            <div class="flex items-center gap-4 mb-12">
+                <span class="badge text-orange-400 border-orange-500/20">GitHub Repositories</span>
+                <div class="h-px flex-1 bg-white/5"></div>
+                <h2 class="text-3xl font-black tracking-tighter">Open Source Hub</h2>
+            </div>
+
+            <div class="grid md:grid-cols-3 gap-6">
+                <!-- Thinking AI -->
+                <a href="https://github.com/aakashkailashiya" target="_blank" class="bento-card p-8 hover:bg-white/[0.03]">
+                    <i data-lucide="cpu" class="w-8 h-8 text-orange-500 mb-6"></i>
+                    <h4 class="text-xl font-black mb-2">Thinking AI</h4>
+                    <p class="text-gray-500 text-sm mb-6">Local LLM analyzer and prompt engineering workflows for offline intelligence.</p>
+                    <div class="flex items-center gap-2 text-xs font-bold text-orange-500">
+                        View Codebase <i data-lucide="github" class="w-4 h-4"></i>
+                    </div>
+                </a>
+
+                <!-- Heal-OS -->
+                <a href="https://github.com/aakashkailashiya/Heal-OS" target="_blank" class="bento-card p-8 hover:bg-white/[0.03]">
+                    <i data-lucide="activity" class="w-8 h-8 text-cyan-500 mb-6"></i>
+                    <h4 class="text-xl font-black mb-2">Heal-OS</h4>
+                    <p class="text-gray-500 text-sm mb-6">Kernel optimizations and privacy hardening for Android operating systems.</p>
+                    <div class="flex items-center gap-2 text-xs font-bold text-cyan-500">
+                        View Codebase <i data-lucide="github" class="w-4 h-4"></i>
+                    </div>
+                </a>
+
+                <!-- AiDev -->
+                <a href="https://github.com/aakashkailashiya/AiDev" target="_blank" class="bento-card p-8 hover:bg-white/[0.03]">
+                    <i data-lucide="terminal" class="w-8 h-8 text-purple-500 mb-6"></i>
+                    <h4 class="text-xl font-black mb-2">AiDev</h4>
+                    <p class="text-gray-500 text-sm mb-6">Integrated toolset for automating code generation and software testing.</p>
+                    <div class="flex items-center gap-2 text-xs font-bold text-purple-500">
+                        View Codebase <i data-lucide="github" class="w-4 h-4"></i>
+                    </div>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Web Section -->
+    <section id="web" class="py-24 px-6 max-w-7xl mx-auto">
+        <div class="flex flex-col md:flex-row justify-between items-end mb-12 gap-6">
+            <div>
+                <h2 class="text-4xl font-black tracking-tighter mb-4">Web Architecture</h2>
+                <p class="text-gray-500">Professional digital platforms for high-growth businesses.</p>
+            </div>
+            <div class="badge text-indigo-400 border-indigo-500/20">Client Projects</div>
+        </div>
+
+        <div class="grid md:grid-cols-3 gap-6">
+            <!-- LV Softech -->
+            <a href="https://lvsoftech.com/" target="_blank" class="bento-card p-8 flex flex-col justify-between group">
+                <div>
+                    <div class="w-12 h-12 bg-white/5 rounded-xl flex items-center justify-center mb-6">
+                        <i data-lucide="code-2" class="text-indigo-400"></i>
+                    </div>
+                    <h4 class="text-xl font-black mb-2">LV Softech</h4>
+                    <p class="text-gray-500 text-sm mb-8">Software solution and enterprise-level IT development platform.</p>
+                </div>
+                <div class="flex justify-between items-center text-[10px] font-black uppercase tracking-widest text-indigo-400 group-hover:text-white transition-colors">
+                    Visit Site <i data-lucide="arrow-up-right"></i>
+                </div>
+            </a>
+
+            <!-- Selja Agro -->
+            <a href="https://seljaagro.com/" target="_blank" class="bento-card p-8 flex flex-col justify-between group">
+                <div>
+                    <div class="w-12 h-12 bg-white/5 rounded-xl flex items-center justify-center mb-6">
+                        <i data-lucide="leaf" class="text-green-400"></i>
+                    </div>
+                    <h4 class="text-xl font-black mb-2">Selja Agro</h4>
+                    <p class="text-gray-500 text-sm mb-8">E-commerce and agricultural digital presence for farming brands.</p>
+                </div>
+                <div class="flex justify-between items-center text-[10px] font-black uppercase tracking-widest text-green-400 group-hover:text-white transition-colors">
+                    Visit Site <i data-lucide="arrow-up-right"></i>
+                </div>
+            </a>
+
+            <!-- Metro -->
+            <a href="https://metroconsultants.in/" target="_blank" class="bento-card p-8 flex flex-col justify-between group">
+                <div>
+                    <div class="w-12 h-12 bg-white/5 rounded-xl flex items-center justify-center mb-6">
+                        <i data-lucide="building" class="text-blue-400"></i>
+                    </div>
+                    <h4 class="text-xl font-black mb-2">Metro Consultants</h4>
+                    <p class="text-gray-500 text-sm mb-8">Clean, corporate professional site for architectural consultancy.</p>
+                </div>
+                <div class="flex justify-between items-center text-[10px] font-black uppercase tracking-widest text-blue-400 group-hover:text-white transition-colors">
+                    Visit Site <i data-lucide="arrow-up-right"></i>
+                </div>
+            </a>
+        </div>
+    </section>
+
+    <!-- Content Ticker -->
+    <div class="py-12 border-y border-white/5 bg-white/[0.02] overflow-hidden whitespace-nowrap">
+        <div class="animate-marquee">
+            <span class="mx-12 text-3xl md:text-5xl font-black text-white/10 uppercase tracking-tighter">Android Native</span>
+            <span class="mx-12 text-3xl md:text-5xl font-black text-white/10 uppercase tracking-tighter">React Architecture</span>
+            <span class="mx-12 text-3xl md:text-5xl font-black text-white/10 uppercase tracking-tighter">LM Studio Expert</span>
+            <span class="mx-12 text-3xl md:text-5xl font-black text-white/10 uppercase tracking-tighter">Kotlin Mastery</span>
+            <span class="mx-12 text-3xl md:text-5xl font-black text-white/10 uppercase tracking-tighter">3,500+ Deep Dives</span>
+            <!-- Duplicate -->
+            <span class="mx-12 text-3xl md:text-5xl font-black text-white/10 uppercase tracking-tighter">Android Native</span>
+            <span class="mx-12 text-3xl md:text-5xl font-black text-white/10 uppercase tracking-tighter">React Architecture</span>
+        </div>
+    </div>
+
+    <!-- YouTube/Content -->
+    <section id="content" class="py-32 px-6 max-w-7xl mx-auto">
+        <div class="flex flex-col md:flex-row justify-between items-end mb-16">
+            <div>
+                <div class="flex items-center gap-2 text-red-500 mb-4 font-black text-sm uppercase tracking-widest">
+                    <i data-lucide="play" class="w-4 h-4 fill-current"></i> Content Studio
+                </div>
+                <h2 class="text-5xl md:text-7xl font-black tracking-tighter">Educational Feed.</h2>
+            </div>
+            <a href="https://youtube.com/akashkailashiya" target="_blank" class="px-8 py-4 glass rounded-2xl font-bold hover:bg-white/10 transition-all flex items-center gap-2">
+                YouTube Channel <i data-lucide="arrow-right" class="w-5 h-5"></i>
+            </a>
+        </div>
+
+        <div class="grid md:grid-cols-2 gap-8">
+            <div class="space-y-4">
+                <div class="video-container aspect-video">
+                    <iframe class="w-full h-full" src="https://www.youtube.com/embed/EVRfJct7apY?modestbranding=1" frameborder="0" allowfullscreen></iframe>
+                </div>
+                <h4 class="font-bold text-lg leading-snug">Advanced Tech Deep Dive & Analysis</h4>
+            </div>
+            <div class="space-y-4">
+                <div class="video-container aspect-video">
+                    <iframe class="w-full h-full" src="https://www.youtube.com/embed/WH5G3jYWbAQ?modestbranding=1" frameborder="0" allowfullscreen></iframe>
+                </div>
+                <h4 class="font-bold text-lg leading-snug">Software Engineering & Architecture</h4>
+            </div>
+            <div class="space-y-4">
+                <div class="video-container aspect-video">
+                    <iframe class="w-full h-full" src="https://www.youtube.com/embed/m_7k6sd1N7o?modestbranding=1" frameborder="0" allowfullscreen></iframe>
+                </div>
+                <h4 class="font-bold text-lg leading-snug">Modern App Performance & Optimization</h4>
+            </div>
+            <div class="space-y-4">
+                <div class="video-container aspect-video">
+                    <iframe class="w-full h-full" src="https://www.youtube.com/embed/NgxSWYMyLig?modestbranding=1" frameborder="0" allowfullscreen></iframe>
+                </div>
+                <h4 class="font-bold text-lg leading-snug">Privacy-First Coding & Workflows</h4>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="py-40 px-6 max-w-5xl mx-auto text-center">
+        <div class="bento-card p-12 md:p-24 bg-blue-600 relative overflow-hidden">
+            <div class="absolute inset-0 bg-black/60 backdrop-blur-2xl"></div>
+            <div class="relative z-10">
+                <h2 class="text-5xl md:text-8xl font-black tracking-tighter mb-12 italic">Let's Create.</h2>
+                <a href="mailto:akashkailashiyabusiness@gmail.com" class="text-lg md:text-3xl font-black underline decoration-4 underline-offset-8 hover:text-blue-400 transition-colors">
+                    akashkailashiyabusiness@gmail.com
+                </a>
+                
+                <div class="mt-20 flex justify-center gap-8 md:gap-12 flex-wrap">
+                    <a href="https://youtube.com/akashkailashiya" class="hover:scale-125 transition-transform"><i data-lucide="youtube"></i></a>
+                    <a href="https://github.com/aakashkailashiya" class="hover:scale-125 transition-transform"><i data-lucide="github"></i></a>
+                    <a href="#" class="hover:scale-125 transition-transform"><i data-lucide="linkedin"></i></a>
+                    <a href="#" class="hover:scale-125 transition-transform"><i data-lucide="instagram"></i></a>
+                </div>
+            </div>
+        </div>
+        <div class="mt-20 text-[10px] font-black text-gray-600 tracking-[0.6em] uppercase">
+            © 2026 Akash Kailashiya. All Assets Verified.
+        </div>
+    </footer>
+
+    <script>
+        lucide.createIcons();
+
+        // Reveal on scroll
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('opacity-100', 'translate-y-0');
+                    entry.target.classList.remove('opacity-0', 'translate-y-8');
+                }
+            });
+        }, { threshold: 0.1 });
+
+        document.querySelectorAll('.bento-card, #content .space-y-4').forEach(el => {
+            el.classList.add('opacity-0', 'translate-y-8', 'transition-all', 'duration-700');
+            observer.observe(el);
+        });
+    </script>
+</body>
+</html>
